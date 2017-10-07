@@ -1,0 +1,17 @@
+{
+  "name": "cookery_book",
+  "version": "0.0.1",
+  "description": "Aplikacja typu ,,książka kucharska''",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "Daria",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.1"
+  }
+}
