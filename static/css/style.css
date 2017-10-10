@@ -3,8 +3,68 @@
  */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
+/******************/
+/*      FONT      */
+/******************/
 body {
+    margin: 0;
     font-family: 'Open Sans', sans-serif;
+}
+
+/******************/
+/* NAVIGATION BAR */
+/******************/
+#navbar {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #2860B0;
+}
+
+#navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#navbar > ul > li {
+    display: inline-block;
+}
+
+#navbar a {
+    display: block;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #128f99;
+}
+
+#navbar > ul > li.active > a,
+#navbar > ul > li:hover > a,
+#navbar .dropdown ul li:hover > a {
+    background: #0c7fb0;
+}
+
+#navbar .dropdown ul {
+    display: none;
+    position: absolute;
+}
+
+#navbar .dropdown:hover > ul {
+    display: block;
+}
+
+#navbar .dropdown ul li a {
+    background: #0fa1e0;
+}
+
+/******************/
+/*  MAIN CONTENT  */
+/******************/
+#main-content {
+    margin-top: 50px;
+    margin-left: 10px;
 }
 
 .hidden {

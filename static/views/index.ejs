@@ -8,58 +8,78 @@
 </head>
 <body>
 
-<h2>Książka kucharska - strona główna</h2>
+<div id="navbar">
+    <ul>
+        <li class="active"><a href="#"><span>Strona główna</span></a></li>
+        <li class="dropdown"><a href="#"><span>Obiady</span></a>
+            <ul>
+                <li><a href="#"><span>Spaghetti</span></a></li>
+                <li><a href="#"><span>Inny obiad</span></a></li>
+            </ul>
+        </li>
+        <li class="dropdown"><a href="#"><span>Ciasta</span></a>
+            <ul>
+                <li><a href="#"><span>Ciasto biszkoptowe</span></a></li>
+                <li><a href="#"><span>Inne ciasto</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
 
-<div>
+<div id="main-content">
+    <h2>Książka kucharska - strona główna</h2>
+
     <div>
-        <div class="recipe-title">
-            <h3><span class="toggle-recipe">&#9658;</span>Ciasto biszkoptowe</h3>
+        <div>
+            <div class="recipe-title">
+                <h3><span class="toggle-recipe">&#9658;</span>Ciasto biszkoptowe</h3>
+            </div>
+            <div class="recipe-content hidden">
+                <div>
+                    <strong>Trudność:</strong>
+                    <p>Łatwe</p>
+                </div>
+                <div>
+                    <strong>Czas wykonania:</strong>
+                    <p>?? minut</p>
+                </div>
+                <div>
+                    <strong>Składniki:</strong>
+                    <ul>
+                        <li>4 jajka</li>
+                        <li>szczypta soli</li>
+                        <li>szklanka cukru</li>
+                        <li>pół szklanki mąki ziemniaczanej</li>
+                        <li>pół szklanki mąki pszennej</li>
+                        <li>1 czubata łyżeczka proszku do pieczenia</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>Wykonanie:</strong>
+                    <ol>
+                        <li>Ubić mikserem 4 białka ze szczyptą soli</li>
+                        <li>Dodawać porcjami szklankę cukru, wciąż ubijając aż piana zrobi się sztywna</li>
+                        <li>Dodawać po jednym żółtku, wciąż ubijając. Ubijać do czasu aż będą się robić pękające
+                            pęcherzyki
+                            powietrza
+                        </li>
+                        <li>Odłożyć mikser, już nie będzie potrzebny</li>
+                        <li>Przygotować pół szklanki mąki ziemniaczanej, pół szklanki mąki pszennej oraz proszek do
+                            pieczenia
+                        </li>
+                        <li>Mąki z proszkiem przesiewać przez sitko i delikatnie mieszać (łyżką! nie mikserem)</li>
+                        <li>Piec ?? minut w piekarniku nagrzanym do ?? stopni Celcjusza.</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-        <div class="recipe-content hidden">
-            <div>
-                <strong>Trudność:</strong>
-                <p>Łatwe</p>
+        <div id="przepis-na-cos-innego">
+            <div class="recipe-title">
+                <h3><span class="toggle-recipe">&#9658;</span>Inne danie</h3>
             </div>
-            <div>
-                <strong>Czas wykonania:</strong>
-                <p>?? minut</p>
+            <div class="recipe-content hidden">
+                Przepis na inne danie.
             </div>
-            <div>
-                <strong>Składniki:</strong>
-                <ul>
-                    <li>4 jajka</li>
-                    <li>szczypta soli</li>
-                    <li>szklanka cukru</li>
-                    <li>pół szklanki mąki ziemniaczanej</li>
-                    <li>pół szklanki mąki pszennej</li>
-                    <li>1 czubata łyżeczka proszku do pieczenia</li>
-                </ul>
-            </div>
-            <div>
-                <strong>Wykonanie:</strong>
-                <ol>
-                    <li>Ubić mikserem 4 białka ze szczyptą soli</li>
-                    <li>Dodawać porcjami szklankę cukru, wciąż ubijając aż piana zrobi się sztywna</li>
-                    <li>Dodawać po jednym żółtku, wciąż ubijając. Ubijać do czasu aż będą się robić pękające
-                        pęcherzyki
-                        powietrza
-                    </li>
-                    <li>Odłożyć mikser, już nie będzie potrzebny</li>
-                    <li>Przygotować pół szklanki mąki ziemniaczanej, pół szklanki mąki pszennej oraz proszek do
-                        pieczenia
-                    </li>
-                    <li>Mąki z proszkiem przesiewać przez sitko i delikatnie mieszać (łyżką! nie mikserem)</li>
-                    <li>Piec ?? minut w piekarniku nagrzanym do ?? stopni Celcjusza.</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-    <div id="przepis-na-cos-innego">
-        <div class="recipe-title">
-            <h3><span class="toggle-recipe">&#9658;</span>Inne danie</h3>
-        </div>
-        <div class="recipe-content hidden">
-            Przepis na inne danie.
         </div>
     </div>
 </div>
