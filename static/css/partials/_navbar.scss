@@ -1,0 +1,59 @@
+// *****************/
+//    VARIABLES    */
+// *****************/
+$navbar-background-color: #2860B0;
+$navbar-dropdown-background-color: #0fa1e0;
+$navbar-link-color: #128f99;
+$navbar-hover-color: #0c7fb0;
+
+#navbar {
+  top: 0;
+  width: 100%;
+  position: fixed;
+  background-color: $navbar-background-color;
+
+  > ul {
+    > li {
+      display: inline-block;
+      &.active > a, &:hover > a {
+        background-color: $navbar-hover-color;
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dropdown {
+
+    &:hover > ul {
+      display: block;
+    }
+
+    ul {
+      display: none;
+      position: absolute;
+
+      li a {
+        background-color: $navbar-dropdown-background-color;
+      }
+
+      li:hover > a {
+        background-color: $navbar-hover-color;
+      }
+    }
+
+  }
+
+  a {
+    background-color: $navbar-link-color;
+    color: #ffffff;
+    font-size: 13px;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+}

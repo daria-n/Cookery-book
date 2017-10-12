@@ -1,0 +1,29 @@
+/**
+ * Created by Daria on 07.10.2017.
+ */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+/******************/
+/*      FONT      */
+/******************/
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/******************/
+/* NAVIGATION BAR */
+/******************/
+@import "partials/navbar";
+
+/******************/
+/*  MAIN CONTENT  */
+/******************/
+#main-content {
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
+.hidden {
+  display: none;
+}
