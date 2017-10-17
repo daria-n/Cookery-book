@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Książka kucharska</title>
 </head>
-<body>
+<body ng-app="cookeryBookApp">
 
-<div id="navbar">
+<nav>
     <ul>
         <li class="active"><a href="#"><span>Strona główna</span></a></li>
         <li class="dropdown"><a href="#"><span>Obiady</span></a>
             <ul>
-                <li><a href="#"><span>Spaghetti</span></a></li>
-                <li><a href="#"><span>Inny obiad</span></a></li>
+                <li><a href="#!spaghetti"><span>Spaghetti</span></a></li>
             </ul>
         </li>
         <li class="dropdown"><a href="#"><span>Ciasta</span></a>
             <ul>
-                <li><a href="#"><span>Ciasto biszkoptowe</span></a></li>
-                <li><a href="#"><span>Inne ciasto</span></a></li>
+                <li><a href="#!biszkopt" class="biszkopt"><span>Ciasto biszkoptowe</span></a></li>
             </ul>
         </li>
     </ul>
-</div>
+</nav>
 
 <div id="main-content">
-    <h2>Książka kucharska - strona główna</h2>
+    <h2>Książka kucharska</h2>

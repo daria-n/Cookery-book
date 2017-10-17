@@ -1,13 +1,22 @@
 /**
  * Created by Daria on 07.10.2017.
  */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 /******************/
 /*      FONT      */
 /******************/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+/******************/
+/*     GENERAL    */
+/******************/
+html {
+  overflow-y: scroll;
+}
+
 body {
   margin: 0;
+  text-align: justify;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -20,8 +29,7 @@ body {
 /*  MAIN CONTENT  */
 /******************/
 #main-content {
-  margin-top: 50px;
-  margin-left: 10px;
+  margin: 50px 20px;
 }
 
 .hidden {
