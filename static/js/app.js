@@ -23,13 +23,40 @@ angular.module("cookeryBookApp", ['ngRoute'])
                 .when('/main', {
                     templateUrl: 'views/_main.ejs'
                 })
-                .when('/spaghetti', {
-                    templateUrl: 'views/_spaghetti.ejs'
-                })
-                .when('/biszkopt', {
-                    templateUrl: 'views/_biszkopt.ejs'
+                .when('/:name', {
+                    templateUrl: 'views/_recipe_detail.ejs'
                 })
                 .otherwise({
                     redirectTo: '/main'
                 });
-        }]);
+        }])
+    .service("recipesService", ['$http', function ($http) {
+        return $http.get('/recipes');
+    }])
+    .controller("mainController", ['$scope', '$location', 'recipesService', function ($scope, $location, recipesService) {
+        var main = this;
+
+        $scope.recipeUrl = $location.path().substr(1);
+
+        recipesService.then(function (data) {
+            main.posts = data.data;
+
+            var getCurrentRecipe = function (UrlName) {
+                return main.posts.filter(function (obj) {
+                    return obj.UrlName === UrlName;
+                });
+            };
+
+            if ($scope.recipeUrl !== "main")
+                $scope.currentRecipe = getCurrentRecipe($scope.recipeUrl)[0];
+        });
+
+        main.buildUrl = function (UrlName) {
+            return "#!" + UrlName;
+        };
+
+        main.buildPathToImg = function (UrlName) {
+            return "../img/" + UrlName + ".jpg";
+        };
+
+    }]);

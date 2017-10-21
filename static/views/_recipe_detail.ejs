@@ -1,0 +1,32 @@
+<div class="recipe" ng-controller="mainController as main">
+    <div class="recipe-title">
+        <h3>{{ currentRecipe.name }}</h3>
+        <img ng-src="{{ main.buildPathToImg(currentRecipe.UrlName) }}" alt="" width="100px">
+    </div>
+    <div class="recipe-content">
+        <div>
+            <strong>Trudność:</strong>
+            <p>{{ currentRecipe.difficulty }}</p>
+        </div>
+        <div>
+            <strong>Czas wykonania:</strong>
+            <p>{{ currentRecipe.time }}</p>
+        </div>
+        <div>
+            <strong>Składniki:</strong>
+            <ul>
+                <li ng-repeat="ingredient in currentRecipe.ingredients">
+                    <p>{{ ingredient }}</p>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <strong>Wykonanie:</strong>
+            <ol>
+                <li ng-repeat="step in currentRecipe.procedure">
+                    <p>{{ step }}</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
