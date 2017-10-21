@@ -1,0 +1,21 @@
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  max-width: 80%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.post-info {
+  background-color: #feffaa;
+
+  img {
+    display: block;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .post-category {
+    color: #808285;
+  }
+}

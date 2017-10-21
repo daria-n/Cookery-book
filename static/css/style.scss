@@ -17,7 +17,21 @@ html {
 body {
   margin: 0;
   text-align: justify;
+  background-color: #fff;
   font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  list-style: none;
 }
 
 /******************/
@@ -32,6 +46,7 @@ body {
   margin: 50px 20px;
 }
 
-.hidden {
-  display: none;
-}
+/******************/
+/*    MAIN PAGE   */
+/******************/
+@import "partials/mainPage";

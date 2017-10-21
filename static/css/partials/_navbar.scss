@@ -9,6 +9,7 @@ $navbar-hover-color: #0c7fb0;
 nav {
   top: 0;
   width: 100%;
+  z-index: 15;
   position: fixed;
   background-color: $navbar-background-color;
 
