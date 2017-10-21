@@ -2,6 +2,8 @@
   {
     "name": "ciasto biszkoptowe",
     "UrlName": "biszkopt",
+    "category": "ciasta",
+    "description": "Ciasto biszkoptowe, miękkie i puszyste. Można przełożyć masą lub owocami.",
     "difficulty": "łatwe",
     "time": "40 minut",
     "ingredients": [
@@ -25,6 +27,8 @@
   {
     "name": "spaghetti",
     "UrlName": "spaghetti",
+    "category": "obiady",
+    "description": "Tradycyjna włoska potrawa. Makaron z sosem pomidorowym i mięsem.",
     "difficulty": "średnie",
     "time": "50 minut",
     "ingredients": [
