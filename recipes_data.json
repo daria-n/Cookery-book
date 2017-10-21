@@ -1,0 +1,42 @@
+[
+  {
+    "name": "ciasto biszkoptowe",
+    "UrlName": "biszkopt",
+    "difficulty": "łatwe",
+    "time": "40 minut",
+    "ingredients": [
+      "4 jajka",
+      "szczypta soli",
+      "szklanka cukru",
+      "pół szklanki mąki ziemniaczanej",
+      "pół szklanki mąki pszennej",
+      "1 czubata łyżeczka proszku do pieczenia"
+    ],
+    "procedure": [
+      "Ubić mikserem 4 białka ze szczyptą soli",
+      "Dodawać porcjami szklankę cukru, wciąż ubijając aż piana zrobi się sztywna",
+      "Dodawać po jednym żółtku, wciąż ubijając. Ubijać do czasu aż będą się robić pękające pęcherzyki powietrza",
+      "Odłożyć mikser, już nie będzie potrzebny",
+      "Przygotować pół szklanki mąki ziemniaczanej, pół szklanki mąki pszennej oraz proszek do pieczenia",
+      "Mąki z proszkiem przesiewać przez sitko i delikatnie mieszać (łyżką! nie mikserem)",
+      "Piec ?? minut w piekarniku nagrzanym do ?? stopni Celcjusza."
+    ]
+  },
+  {
+    "name": "spaghetti",
+    "UrlName": "spaghetti",
+    "difficulty": "średnie",
+    "time": "50 minut",
+    "ingredients": [
+      "makaron",
+      "sos",
+      "żółty ser"
+    ],
+    "procedure": [
+      "ugotować makaron",
+      "podgrzać sos",
+      "wymieszać",
+      "posypać startym żółtym serem"
+    ]
+  }
+]
