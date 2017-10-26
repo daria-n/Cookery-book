@@ -42,8 +42,10 @@ nav {
         background-color: $navbar-dropdown-background-color;
       }
 
-      li:hover > a {
-        background-color: $navbar-hover-color;
+      li:hover {
+        > div > a, > a {
+          background-color: $navbar-hover-color;
+        }
       }
     }
 

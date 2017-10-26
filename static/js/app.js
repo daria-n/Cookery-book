@@ -22,6 +22,10 @@ angular.module("cookeryBookApp", ['ngRoute'])
     .controller("mainController", ['$scope', '$location', 'recipesService', function ($scope, $location, recipesService) {
         var main = this;
 
+        $scope.clearInput = function(){
+            $scope.searchString = "";
+        };
+
         $scope.recipeUrl = $location.path().substr(1);
 
         recipesService.then(function (data) {
@@ -45,4 +49,18 @@ angular.module("cookeryBookApp", ['ngRoute'])
             return "../img/" + UrlName + ".jpg";
         };
 
-    }]);
+    }])
+    .filter('searchByName', function () {
+        return function (arr, searchString) {
+            var result = [];
+            if (searchString) {
+                searchString = searchString.toLowerCase();
+
+                angular.forEach(arr, function (item) {
+                    if (item.name.toLowerCase().indexOf(searchString) !== -1)
+                        result.push(item);
+                });
+            }
+            return result;
+        };
+    });

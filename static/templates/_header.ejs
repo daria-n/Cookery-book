@@ -20,6 +20,20 @@
                 <li><a href="#!biszkopt" class="biszkopt"><span>Ciasto biszkoptowe</span></a></li>
             </ul>
         </li>
+
+        <div ng-controller="mainController as main" class="searchBox dropdown">
+            <input type="text" ng-model="searchString" placeholder="Znajdź przepis"/>
+            <ul>
+                <li ng-repeat="item in main.posts | searchByName:searchString">
+                    <div>
+                        <a href={{main.buildUrl(item.UrlName)}} ng-click="clearInput()">
+                            <img ng-src="{{ main.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
+                            <span>{{item.name}}</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </ul>
 </nav>
 
