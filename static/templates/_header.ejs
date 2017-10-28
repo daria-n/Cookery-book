@@ -22,11 +22,11 @@
         </li>
 
         <div ng-controller="mainController as main" class="searchBox dropdown">
-            <input type="text" ng-model="searchString" placeholder="Znajdź przepis"/>
+            <input type="text" ng-model="main.searchString" placeholder="Znajdź przepis"/>
             <ul>
-                <li ng-repeat="item in main.posts | searchByName:searchString">
+                <li ng-repeat="item in main.posts | searchByName:main.searchString">
                     <div>
-                        <a href={{main.buildUrl(item.UrlName)}} ng-click="clearInput()">
+                        <a href={{main.buildUrl(item.UrlName)}} ng-click="main.clearInput()">
                             <img ng-src="{{ main.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
                             <span>{{item.name}}</span>
                         </a>

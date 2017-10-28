@@ -7,10 +7,14 @@ angular.module("cookeryBookApp", ['ngRoute'])
         function ($routeProvider) {
             $routeProvider
                 .when('/main', {
-                    templateUrl: 'views/_main.ejs'
+                    templateUrl: 'views/_main.ejs',
+                    controller: 'mainController',
+                    controllerAs: 'main'
                 })
                 .when('/:name', {
-                    templateUrl: 'views/_recipe_detail.ejs'
+                    templateUrl: 'views/_recipe_detail.ejs',
+                    controller: 'mainController',
+                    controllerAs: 'main'
                 })
                 .otherwise({
                     redirectTo: '/main'
@@ -20,32 +24,32 @@ angular.module("cookeryBookApp", ['ngRoute'])
         return $http.get('/recipes');
     }])
     .controller("mainController", ['$scope', '$location', 'recipesService', function ($scope, $location, recipesService) {
-        var main = this;
+        var vm = this;
 
-        $scope.clearInput = function(){
-            $scope.searchString = "";
+        vm.clearInput = function(){
+            vm.searchString = "";
         };
 
-        $scope.recipeUrl = $location.path().substr(1);
+        vm.recipeUrl = $location.path().substr(1);
 
         recipesService.then(function (data) {
-            main.posts = data.data;
+            vm.posts = data.data;
 
             var getCurrentRecipe = function (UrlName) {
-                return main.posts.filter(function (obj) {
+                return vm.posts.filter(function (obj) {
                     return obj.UrlName === UrlName;
                 });
             };
 
-            if ($scope.recipeUrl !== "main")
-                $scope.currentRecipe = getCurrentRecipe($scope.recipeUrl)[0];
+            if (vm.recipeUrl !== "main")
+                vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
         });
 
-        main.buildUrl = function (UrlName) {
+        vm.buildUrl = function (UrlName) {
             return "#!" + UrlName;
         };
 
-        main.buildPathToImg = function (UrlName) {
+        vm.buildPathToImg = function (UrlName) {
             return "../img/" + UrlName + ".jpg";
         };
 
