@@ -7,7 +7,8 @@ angular.module("cookeryBookApp", ['ngRoute'])
     .service("recipesService", ['$http', function ($http) {
         return $http.get('/recipes');
     }])
-    .controller("mainController", ['$location', 'recipesService', mainCtrlFcn])
+    .service("urlService", urlServiceFcn)
+    .controller("mainController", ['$location', 'recipesService', 'urlService', mainCtrlFcn])
     .filter('searchByName', searchByNameFilterFcn);
 
 function routing($routeProvider) {
@@ -27,7 +28,13 @@ function routing($routeProvider) {
         });
 }
 
-function mainCtrlFcn($location, recipesService) {
+function urlServiceFcn() {
+    this.buildUrl = function (UrlName) {
+        return "#!" + UrlName;
+    };
+}
+
+function mainCtrlFcn($location, recipesService, urlService) {
     var vm = this;
 
     vm.clearInput = function () {
@@ -49,9 +56,7 @@ function mainCtrlFcn($location, recipesService) {
             vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
     });
 
-    vm.buildUrl = function (UrlName) {
-        return "#!" + UrlName;
-    };
+    vm.buildUrl = urlService.buildUrl;
 
     vm.buildPathToImg = function (UrlName) {
         return "../img/" + UrlName + ".jpg";
