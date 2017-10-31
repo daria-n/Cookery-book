@@ -8,6 +8,7 @@ angular.module("cookeryBookApp", ['ngRoute'])
         return $http.get('/recipes');
     }])
     .service("urlService", urlServiceFcn)
+    .controller("navController", ['recipesService', 'urlService', navCtrlFcn])
     .controller("mainController", ['$location', 'recipesService', 'urlService', mainCtrlFcn])
     .filter('searchByName', searchByNameFilterFcn);
 
@@ -32,6 +33,23 @@ function urlServiceFcn() {
     this.buildUrl = function (UrlName) {
         return "#!" + UrlName;
     };
+}
+
+function navCtrlFcn(recipesService, urlService) {
+    var vm = this;
+
+    recipesService.then(function (data) {
+        vm.posts = data.data;
+        vm.recipesByCategory = {};
+        for (var i = 0; i < vm.posts.length; i++) {
+            var post = vm.posts[i];
+            if (!vm.recipesByCategory[post.category])
+                vm.recipesByCategory[post.category] = [];
+            vm.recipesByCategory[post.category].push(post);
+        }
+    });
+
+    vm.buildUrl = urlService.buildUrl;
 }
 
 function mainCtrlFcn($location, recipesService, urlService) {

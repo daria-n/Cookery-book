@@ -7,17 +7,14 @@
 </head>
 <body ng-app="cookeryBookApp">
 
-<nav>
+<nav ng-controller="navController as navi">
     <ul>
-        <li class="active"><a href="#"><span>Strona główna</span></a></li>
-        <li class="dropdown"><a href="#"><span>Obiady</span></a>
+        <li class="active"><a href="#"><span>Strona główna</span></a></li
+        ><li class="dropdown" ng-repeat="(key, value) in navi.recipesByCategory"><a href="#"><span>{{ key }}</span></a>
             <ul>
-                <li><a href="#!spaghetti"><span>Spaghetti</span></a></li>
-            </ul>
-        </li>
-        <li class="dropdown"><a href="#"><span>Ciasta</span></a>
-            <ul>
-                <li><a href="#!biszkopt" class="biszkopt"><span>Ciasto biszkoptowe</span></a></li>
+                <li ng-repeat="recipe in value">
+                    <a href={{navi.buildUrl(recipe.UrlName)}}><span>{{ recipe.name }}</span></a>
+                </li>
             </ul>
         </li>
 
