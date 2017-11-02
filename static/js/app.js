@@ -4,12 +4,12 @@
 
 angular.module("cookeryBookApp", ['ngRoute'])
     .config(['$routeProvider', routing])
-    .service("recipesService", ['$http', function ($http) {
+    .service("getRecipesService", ['$http', function ($http) {
         return $http.get('/recipes');
     }])
     .service("urlService", urlServiceFcn)
-    .controller("navController", ['recipesService', 'urlService', navCtrlFcn])
-    .controller("mainController", ['$location', 'recipesService', 'urlService', mainCtrlFcn])
+    .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
+    .controller("mainController", ['$location', 'getRecipesService', 'urlService', mainCtrlFcn])
     .filter('searchByName', searchByNameFilterFcn);
 
 function routing($routeProvider) {
@@ -35,10 +35,10 @@ function urlServiceFcn() {
     };
 }
 
-function navCtrlFcn(recipesService, urlService) {
+function navCtrlFcn(getRecipesService, urlService) {
     var vm = this;
 
-    recipesService.then(function (data) {
+    getRecipesService.then(function (data) {
         vm.posts = data.data;
         vm.recipesByCategory = {};
         for (var i = 0; i < vm.posts.length; i++) {
@@ -52,7 +52,7 @@ function navCtrlFcn(recipesService, urlService) {
     vm.buildUrl = urlService.buildUrl;
 }
 
-function mainCtrlFcn($location, recipesService, urlService) {
+function mainCtrlFcn($location, getRecipesService, urlService) {
     var vm = this;
 
     vm.clearInput = function () {
@@ -61,7 +61,7 @@ function mainCtrlFcn($location, recipesService, urlService) {
 
     vm.recipeUrl = $location.path().substr(1);
 
-    recipesService.then(function (data) {
+    getRecipesService.then(function (data) {
         vm.posts = data.data;
 
         var getCurrentRecipe = function (UrlName) {
