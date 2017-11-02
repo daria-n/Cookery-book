@@ -30,8 +30,8 @@ function routing($routeProvider) {
 }
 
 function urlServiceFcn() {
-    this.buildUrl = function (UrlName) {
-        return "#!" + UrlName;
+    this.buildUrl = function (recipe) {
+        return "#!" + recipe.UrlName;
     };
 }
 
