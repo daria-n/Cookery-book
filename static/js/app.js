@@ -11,6 +11,7 @@ angular.module("cookeryBookApp", ['ngRoute'])
     .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
     .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
     .controller("mainController", ['$location', 'getRecipesService', 'urlService', mainCtrlFcn])
+    .controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', recipeDetailCtrlFcn])
     .filter('searchByName', searchByNameFilterFcn);
 
 function routing($routeProvider) {
@@ -22,8 +23,8 @@ function routing($routeProvider) {
         })
         .when('/:name', {
             templateUrl: 'views/_recipe_detail.ejs',
-            controller: 'mainController',
-            controllerAs: 'main'
+            controller: 'recipeDetailController',
+            controllerAs: 'detail'
         })
         .otherwise({
             redirectTo: '/main'
@@ -94,6 +95,30 @@ function mainCtrlFcn($location, getRecipesService, urlService) {
     vm.buildPathToImg = function (UrlName) {
         return "../img/" + UrlName + ".jpg";
     };
+}
+
+function recipeDetailCtrlFcn($location, getRecipesService, urlService) {
+    var vm = this;
+
+    vm.recipeUrl = $location.path().split('/')[1];
+
+    getRecipesService.then(function (data) {
+        vm.posts = data.data;
+
+        var getCurrentRecipe = function (UrlName) {
+            return vm.posts.filter(function (obj) {
+                return obj.UrlName === UrlName;
+            });
+        };
+
+        vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
+    });
+
+    vm.buildPathToImg = function (UrlName) {
+        return "../img/" + UrlName + ".jpg";
+    };
+
+    vm.buildRecipeUrl = urlService.buildRecipeUrl;
 }
 
 function searchByNameFilterFcn() {

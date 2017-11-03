@@ -1,21 +1,21 @@
 <div class="recipe">
     <div class="recipe-title">
-        <h3>{{ main.currentRecipe.name }}</h3>
-        <img ng-src="{{ main.buildPathToImg(main.currentRecipe.UrlName) }}" alt="" width="100px">
+        <h3>{{ detail.currentRecipe.name }}</h3>
+        <img ng-src="{{ detail.buildPathToImg(detail.currentRecipe.UrlName) }}" alt="" width="100px">
     </div>
     <div class="recipe-content">
         <div>
             <strong>Trudność:</strong>
-            <p>{{ main.currentRecipe.difficulty }}</p>
+            <p>{{ detail.currentRecipe.difficulty }}</p>
         </div>
         <div>
             <strong>Czas wykonania:</strong>
-            <p>{{ main.currentRecipe.time }}</p>
+            <p>{{ detail.currentRecipe.time }}</p>
         </div>
         <div>
             <strong>Składniki:</strong>
             <ul>
-                <li ng-repeat="ingredient in main.currentRecipe.ingredients">
+                <li ng-repeat="ingredient in detail.currentRecipe.ingredients">
                     <p>{{ ingredient }}</p>
                 </li>
             </ul>
@@ -23,7 +23,7 @@
         <div>
             <strong>Wykonanie:</strong>
             <ol>
-                <li ng-repeat="step in main.currentRecipe.procedure">
+                <li ng-repeat="step in detail.currentRecipe.procedure">
                     <p>{{ step }}</p>
                 </li>
             </ol>
