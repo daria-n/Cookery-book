@@ -18,13 +18,13 @@
             </ul>
         </li>
 
-        <div ng-controller="mainController as main" class="searchBox dropdown">
-            <input type="text" ng-model="main.searchString" placeholder="Znajdź przepis"/>
+        <div ng-controller="searchBoxController as search" class="searchBox dropdown">
+            <input type="text" ng-model="search.searchString" placeholder="Znajdź przepis"/>
             <ul>
-                <li ng-repeat="item in main.posts | searchByName:main.searchString">
+                <li ng-repeat="item in search.posts | searchByName:search.searchString">
                     <div>
-                        <a href={{main.buildUrl(item)}} ng-click="main.clearInput()">
-                            <img ng-src="{{ main.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
+                        <a href={{search.buildUrl(item)}} ng-click="search.clearInput()">
+                            <img ng-src="{{ search.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
                             <span>{{item.name}}</span>
                         </a>
                     </div>

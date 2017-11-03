@@ -9,6 +9,7 @@ angular.module("cookeryBookApp", ['ngRoute'])
     }])
     .service("urlService", urlServiceFcn)
     .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
+    .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
     .controller("mainController", ['$location', 'getRecipesService', 'urlService', mainCtrlFcn])
     .filter('searchByName', searchByNameFilterFcn);
 
@@ -52,12 +53,26 @@ function navCtrlFcn(getRecipesService, urlService) {
     vm.buildUrl = urlService.buildUrl;
 }
 
-function mainCtrlFcn($location, getRecipesService, urlService) {
+function searchBoxCtrlFcn(getRecipesService, urlService) {
     var vm = this;
 
     vm.clearInput = function () {
         vm.searchString = "";
     };
+
+    getRecipesService.then(function (data) {
+        vm.posts = data.data;
+    });
+
+    vm.buildPathToImg = function (UrlName) {
+        return "../img/" + UrlName + ".jpg";
+    };
+
+    vm.buildUrl = urlService.buildUrl;
+}
+
+function mainCtrlFcn($location, getRecipesService, urlService) {
+    var vm = this;
 
     vm.recipeUrl = $location.path().substr(1);
 
