@@ -3,7 +3,7 @@
         <div ng-repeat="post in main.posts" class="post-info">
             <img ng-src="{{ main.buildPathToImg(post.UrlName) }}" alt="" width="200" height="150">
             <div>
-                <h4><a href="{{ main.buildUrl(post) }}"><span>{{ post.name }}</span></a></h4>
+                <h4><a href="{{ main.buildRecipeUrl(post) }}"><span>{{ post.name }}</span></a></h4>
                 <span class="post-category">{{ post.category }}</span>
                 <p>{{ post.description }}</p>
             </div>

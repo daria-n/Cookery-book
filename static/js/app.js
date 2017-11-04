@@ -32,7 +32,7 @@ function routing($routeProvider) {
 }
 
 function urlServiceFcn() {
-    this.buildUrl = function (recipe) {
+    this.buildRecipeUrl = function (recipe) {
         return "#!/" + recipe.category + "/" + recipe.UrlName;
     };
 }
@@ -51,7 +51,7 @@ function navCtrlFcn(getRecipesService, urlService) {
         }
     });
 
-    vm.buildUrl = urlService.buildUrl;
+    vm.buildRecipeUrl = urlService.buildRecipeUrl;
 }
 
 function searchBoxCtrlFcn(getRecipesService, urlService) {
@@ -69,7 +69,7 @@ function searchBoxCtrlFcn(getRecipesService, urlService) {
         return "../img/" + UrlName + ".jpg";
     };
 
-    vm.buildUrl = urlService.buildUrl;
+    vm.buildRecipeUrl = urlService.buildRecipeUrl;
 }
 
 function mainCtrlFcn($location, getRecipesService, urlService) {
@@ -90,7 +90,7 @@ function mainCtrlFcn($location, getRecipesService, urlService) {
             vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
     });
 
-    vm.buildUrl = urlService.buildUrl;
+    vm.buildRecipeUrl = urlService.buildRecipeUrl;
 
     vm.buildPathToImg = function (UrlName) {
         return "../img/" + UrlName + ".jpg";

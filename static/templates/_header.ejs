@@ -13,7 +13,7 @@
         ><li class="dropdown" ng-repeat="(key, value) in navi.recipesByCategory"><a href="#"><span>{{ key }}</span></a>
             <ul>
                 <li ng-repeat="recipe in value">
-                    <a href={{navi.buildUrl(recipe)}}><span>{{ recipe.name }}</span></a>
+                    <a ng-href={{navi.buildRecipeUrl(recipe)}}><span>{{ recipe.name }}</span></a>
                 </li>
             </ul>
         </li>
@@ -23,7 +23,7 @@
             <ul>
                 <li ng-repeat="item in search.posts | searchByName:search.searchString">
                     <div>
-                        <a href={{search.buildUrl(item)}} ng-click="search.clearInput()">
+                        <a ng-href={{search.buildRecipeUrl(item)}} ng-click="search.clearInput()">
                             <img ng-src="{{ search.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
                             <span>{{item.name}}</span>
                         </a>
