@@ -21,7 +21,7 @@ function routing($routeProvider) {
             controller: 'mainController',
             controllerAs: 'main'
         })
-        .when('/:name', {
+        .when('/:category/:name', {
             templateUrl: 'views/_recipe_detail.ejs',
             controller: 'recipeDetailController',
             controllerAs: 'detail'
@@ -33,7 +33,7 @@ function routing($routeProvider) {
 
 function urlServiceFcn() {
     this.buildUrl = function (recipe) {
-        return "#!" + recipe.UrlName;
+        return "#!/" + recipe.category + "/" + recipe.UrlName;
     };
 }
 
@@ -100,7 +100,7 @@ function mainCtrlFcn($location, getRecipesService, urlService) {
 function recipeDetailCtrlFcn($location, getRecipesService, urlService) {
     var vm = this;
 
-    vm.recipeUrl = $location.path().split('/')[1];
+    vm.recipeUrl = $location.path().split('/')[2];
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;
