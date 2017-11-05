@@ -8,10 +8,11 @@ angular.module("cookeryBookApp", ['ngRoute'])
         return $http.get('/recipes');
     }])
     .service("urlService", urlServiceFcn)
+    .service("imgService", imgServiceFcn)
     .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
     .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
-    .controller("mainController", ['$location', 'getRecipesService', 'urlService', mainCtrlFcn])
-    .controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', recipeDetailCtrlFcn])
+    .controller("mainController", ['$location', 'getRecipesService', 'urlService', 'imgService', mainCtrlFcn])
+    .controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', 'imgService', recipeDetailCtrlFcn])
     .filter('searchByName', searchByNameFilterFcn);
 
 function routing($routeProvider) {
@@ -34,6 +35,12 @@ function routing($routeProvider) {
 function urlServiceFcn() {
     this.buildRecipeUrl = function (recipe) {
         return "#!/" + recipe.category + "/" + recipe.UrlName;
+    };
+}
+
+function imgServiceFcn() {
+    this.buildPathToImg = function (UrlName) {
+        return "../img/" + UrlName + ".jpg";
     };
 }
 
@@ -72,7 +79,7 @@ function searchBoxCtrlFcn(getRecipesService, urlService) {
     vm.buildRecipeUrl = urlService.buildRecipeUrl;
 }
 
-function mainCtrlFcn($location, getRecipesService, urlService) {
+function mainCtrlFcn($location, getRecipesService, urlService, imgService) {
     var vm = this;
 
     vm.recipeUrl = $location.path().substr(1);
@@ -91,13 +98,10 @@ function mainCtrlFcn($location, getRecipesService, urlService) {
     });
 
     vm.buildRecipeUrl = urlService.buildRecipeUrl;
-
-    vm.buildPathToImg = function (UrlName) {
-        return "../img/" + UrlName + ".jpg";
-    };
+    vm.buildPathToImg = imgService.buildPathToImg;
 }
 
-function recipeDetailCtrlFcn($location, getRecipesService, urlService) {
+function recipeDetailCtrlFcn($location, getRecipesService, urlService, imgService) {
     var vm = this;
 
     vm.recipeUrl = $location.path().split('/')[2];
@@ -114,11 +118,8 @@ function recipeDetailCtrlFcn($location, getRecipesService, urlService) {
         vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
     });
 
-    vm.buildPathToImg = function (UrlName) {
-        return "../img/" + UrlName + ".jpg";
-    };
-
     vm.buildRecipeUrl = urlService.buildRecipeUrl;
+    vm.buildPathToImg = imgService.buildPathToImg;
 }
 
 function searchByNameFilterFcn() {
