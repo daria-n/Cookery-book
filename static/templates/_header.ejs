@@ -10,7 +10,7 @@
 <nav ng-controller="navController as navi">
     <ul>
         <li class="active"><a href="#"><span>Strona główna</span></a></li
-        ><li class="dropdown" ng-repeat="(key, value) in navi.recipesByCategory"><a href="#"><span>{{ key }}</span></a>
+        ><li class="dropdown" ng-repeat="(key, value) in navi.recipesByCategory"><a ng-href="#!/{{ key }}"><span>{{ key }}</span></a>
             <ul>
                 <li ng-repeat="recipe in value">
                     <a ng-href={{navi.buildRecipeUrl(recipe)}}><span>{{ recipe.name }}</span></a>

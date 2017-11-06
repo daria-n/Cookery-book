@@ -11,7 +11,8 @@ angular.module("cookeryBookApp", ['ngRoute'])
     .service("imgService", imgServiceFcn)
     .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
     .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
-    .controller("mainController", ['$location', 'getRecipesService', 'urlService', 'imgService', mainCtrlFcn])
+    .controller("mainController", ['getRecipesService', 'urlService', 'imgService', mainCtrlFcn])
+    .controller("categoryController", ['$location', '$filter', 'getRecipesService', 'urlService', 'imgService', categoryCtrlFcn])
     .controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', 'imgService', recipeDetailCtrlFcn])
     .filter('searchByName', searchByNameFilterFcn);
 
@@ -20,6 +21,11 @@ function routing($routeProvider) {
         .when('/main', {
             templateUrl: 'views/_main.ejs',
             controller: 'mainController',
+            controllerAs: 'main'
+        })
+        .when('/:category', {
+            templateUrl: 'views/_main.ejs',
+            controller: 'categoryController',
             controllerAs: 'main'
         })
         .when('/:category/:name', {
@@ -79,22 +85,24 @@ function searchBoxCtrlFcn(getRecipesService, urlService) {
     vm.buildRecipeUrl = urlService.buildRecipeUrl;
 }
 
-function mainCtrlFcn($location, getRecipesService, urlService, imgService) {
+function mainCtrlFcn(getRecipesService, urlService, imgService) {
     var vm = this;
-
-    vm.recipeUrl = $location.path().substr(1);
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;
+    });
 
-        var getCurrentRecipe = function (UrlName) {
-            return vm.posts.filter(function (obj) {
-                return obj.UrlName === UrlName;
-            });
-        };
+    vm.buildRecipeUrl = urlService.buildRecipeUrl;
+    vm.buildPathToImg = imgService.buildPathToImg;
+}
 
-        if (vm.recipeUrl !== "main")
-            vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
+function categoryCtrlFcn($location, $filter, getRecipesService, urlService, imgService) {
+    var vm = this;
+
+    var category = $location.path().split('/')[1];
+
+    getRecipesService.then(function (data) {
+        vm.posts = $filter('filter')(data.data, {"category": category});
     });
 
     vm.buildRecipeUrl = urlService.buildRecipeUrl;
