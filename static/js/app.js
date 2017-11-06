@@ -2,19 +2,27 @@
  * Created by Daria on 07.10.2017.
  */
 
-angular.module("cookeryBookApp", ['ngRoute'])
-    .config(['$routeProvider', routing])
-    .service("getRecipesService", ['$http', function ($http) {
-        return $http.get('/recipes');
-    }])
-    .service("urlService", urlServiceFcn)
-    .service("imgService", imgServiceFcn)
-    .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
-    .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
-    .controller("mainController", ['getRecipesService', 'urlService', 'imgService', mainCtrlFcn])
-    .controller("categoryController", ['$location', '$filter', 'getRecipesService', 'urlService', 'imgService', categoryCtrlFcn])
-    .controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', 'imgService', recipeDetailCtrlFcn])
-    .filter('searchByName', searchByNameFilterFcn);
+define(['angular', 'angularRoute'], function (angular) {
+    var app = angular.module("cookeryBookApp", ['ngRoute'])
+        .config(['$routeProvider', routing])
+        .service("getRecipesService", ['$http', function ($http) {
+            return $http.get('/recipes');
+        }])
+        .service("urlService", urlServiceFcn)
+        .service("imgService", imgServiceFcn)
+        .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
+        .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
+        .controller("mainController", ['getRecipesService', 'urlService', 'imgService', mainCtrlFcn])
+        .controller("categoryController", ['$location', '$filter', 'getRecipesService', 'urlService', 'imgService', categoryCtrlFcn])
+        .controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', 'imgService', recipeDetailCtrlFcn])
+        .filter('searchByName', searchByNameFilterFcn);
+
+    app.init = function () {
+        angular.bootstrap(document, ['cookeryBookApp']);
+    };
+
+    return app;
+});
 
 function routing($routeProvider) {
     $routeProvider
