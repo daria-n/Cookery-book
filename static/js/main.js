@@ -18,6 +18,6 @@ require.config({
     }
 });
 
-require(['app'], function (app) {
+require(['app', 'navigation/routing'], function (app) {
     app.init();
 });

@@ -4,11 +4,9 @@
 
 define(['angular', 'angularRoute'], function (angular) {
     var app = angular.module("cookeryBookApp", ['ngRoute'])
-        .config(['$routeProvider', routing])
         .service("getRecipesService", ['$http', function ($http) {
             return $http.get('/recipes');
         }])
-        .service("urlService", urlServiceFcn)
         .service("imgService", imgServiceFcn)
         .controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
         .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
@@ -23,34 +21,6 @@ define(['angular', 'angularRoute'], function (angular) {
 
     return app;
 });
-
-function routing($routeProvider) {
-    $routeProvider
-        .when('/main', {
-            templateUrl: 'views/_main.ejs',
-            controller: 'mainController',
-            controllerAs: 'main'
-        })
-        .when('/:category', {
-            templateUrl: 'views/_main.ejs',
-            controller: 'categoryController',
-            controllerAs: 'main'
-        })
-        .when('/:category/:name', {
-            templateUrl: 'views/_recipe_detail.ejs',
-            controller: 'recipeDetailController',
-            controllerAs: 'detail'
-        })
-        .otherwise({
-            redirectTo: '/main'
-        });
-}
-
-function urlServiceFcn() {
-    this.buildRecipeUrl = function (recipe) {
-        return "#!/" + recipe.category + "/" + recipe.UrlName;
-    };
-}
 
 function imgServiceFcn() {
     this.buildPathToImg = function (UrlName) {
