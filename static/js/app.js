@@ -7,8 +7,6 @@ define(['angular', 'angularRoute'], function (angular) {
         .service("getRecipesService", ['$http', function ($http) {
             return $http.get('/recipes');
         }])
-        .service("imgService", imgServiceFcn)
-        .controller("mainController", ['getRecipesService', 'urlService', 'imgService', mainCtrlFcn])
         .controller("categoryController", ['$location', '$filter', 'getRecipesService', 'urlService', 'imgService', categoryCtrlFcn])
         .controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', 'imgService', recipeDetailCtrlFcn]);
 
@@ -18,23 +16,6 @@ define(['angular', 'angularRoute'], function (angular) {
 
     return app;
 });
-
-function imgServiceFcn() {
-    this.buildPathToImg = function (UrlName) {
-        return "../img/" + UrlName + ".jpg";
-    };
-}
-
-function mainCtrlFcn(getRecipesService, urlService, imgService) {
-    var vm = this;
-
-    getRecipesService.then(function (data) {
-        vm.posts = data.data;
-    });
-
-    vm.buildRecipeUrl = urlService.buildRecipeUrl;
-    vm.buildPathToImg = imgService.buildPathToImg;
-}
 
 function categoryCtrlFcn($location, $filter, getRecipesService, urlService, imgService) {
     var vm = this;

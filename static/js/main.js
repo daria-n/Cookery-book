@@ -18,6 +18,6 @@ require.config({
     }
 });
 
-require(['app', 'navigation/header', 'navigation/routing'], function (app) {
+require(['app', 'navigation/header', 'navigation/routing', 'views/main_view'], function (app) {
     app.init();
 });
