@@ -5,14 +5,13 @@
 require.config({
     paths: {
         'angular': ['https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min'],
-        'angularRoute': ['https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min']
+        'uiRouter': ['https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min']
     },
     shim: {
         angular: {
             exports: 'angular'
         },
-        angularRoute: {
-            exports: 'ngRoute',
+        uiRouter: {
             deps: ['angular']
         }
     }

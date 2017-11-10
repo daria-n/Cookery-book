@@ -7,31 +7,34 @@ define(['../app'], function (app) {
         .service("urlService", urlServiceFcn);
 });
 
-routing.$inject = ['$routeProvider'];
+routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-function routing($routeProvider) {
-    $routeProvider
-        .when('/', {
+function routing($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('base', {
+            url: '/',
             redirectTo: '/main'
         })
-        .when('/main', {
+        .state('main', {
+            url: '/main',
             templateUrl: 'views/_main.ejs',
             controller: 'mainController',
             controllerAs: 'main'
         })
-        .when('/:category', {
+        .state('category', {
+            url: '/:category',
             templateUrl: 'views/_main.ejs',
             controller: 'categoryController',
             controllerAs: 'main'
         })
-        .when('/:category/:name', {
+        .state('recipe', {
+            url: '/:category/:name',
             templateUrl: 'views/_recipe_detail.ejs',
             controller: 'recipeDetailController',
             controllerAs: 'detail'
-        })
-        .otherwise({
-            redirectTo: '/main'
         });
+
+    $urlRouterProvider.otherwise('/main');
 }
 
 function urlServiceFcn() {

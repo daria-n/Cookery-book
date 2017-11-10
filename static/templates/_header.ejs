@@ -10,10 +10,10 @@
 <nav ng-controller="navController as navi">
     <ul>
         <li class="active"><a href="#"><span>Strona główna</span></a></li
-        ><li class="dropdown" ng-repeat="(key, value) in navi.recipesByCategory"><a ng-href="#!/{{ key }}"><span>{{ key }}</span></a>
+        ><li class="dropdown" ng-repeat="(key, value) in navi.recipesByCategory"><a ui-sref="category({category: key})""><span>{{ key }}</span></a>
             <ul>
                 <li ng-repeat="recipe in value">
-                    <a ng-href={{navi.buildRecipeUrl(recipe)}}><span>{{ recipe.name }}</span></a>
+                    <a ui-sref="recipe({category: recipe.category, name: recipe.UrlName})"><span>{{ recipe.name }}</span></a>
                 </li>
             </ul>
         </li>
@@ -23,7 +23,7 @@
             <ul>
                 <li ng-repeat="item in search.posts | searchByName:search.searchString">
                     <div>
-                        <a ng-href={{search.buildRecipeUrl(item)}} ng-click="search.clearInput()">
+                        <a ui-sref="recipe({category: item.category, name: item.UrlName})" ng-click="search.clearInput()">
                             <img ng-src="{{ search.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
                             <span>{{item.name}}</span>
                         </a>
