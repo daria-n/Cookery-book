@@ -3,9 +3,11 @@
  */
 
 define(['../app'], function (app) {
-    app.config(['$routeProvider', routing])
+    app.config(routing)
         .service("urlService", urlServiceFcn);
 });
+
+routing.$inject = ['$routeProvider'];
 
 function routing($routeProvider) {
     $routeProvider
