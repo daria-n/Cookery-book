@@ -3,13 +3,13 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("recipeDetailController", ['$location', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
+    app.controller("recipeDetailController", ['$stateParams', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
 });
 
-function recipeDetailCtrlFcn($location, getRecipesService, imgService) {
+function recipeDetailCtrlFcn($stateParams, getRecipesService, imgService) {
     var vm = this;
 
-    vm.recipeUrl = $location.path().split('/')[2];
+    vm.recipeUrl = $stateParams.name;
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;
