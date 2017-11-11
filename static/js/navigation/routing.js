@@ -3,8 +3,7 @@
  */
 
 define(['../app'], function (app) {
-    app.config(routing)
-        .service("urlService", urlServiceFcn);
+    app.config(routing);
 });
 
 routing.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -35,10 +34,4 @@ function routing($stateProvider, $urlRouterProvider) {
         });
 
     $urlRouterProvider.otherwise('/main');
-}
-
-function urlServiceFcn() {
-    this.buildRecipeUrl = function (recipe) {
-        return "#!/" + recipe.category + "/" + recipe.UrlName;
-    };
 }

@@ -3,18 +3,17 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("mainController", ['getRecipesService', 'urlService', 'imgService', mainCtrlFcn])
+    app.controller("mainController", ['getRecipesService', 'imgService', mainCtrlFcn])
         .service("imgService", imgServiceFcn);
 });
 
-function mainCtrlFcn(getRecipesService, urlService, imgService) {
+function mainCtrlFcn(getRecipesService, imgService) {
     var vm = this;
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;
     });
 
-    vm.buildRecipeUrl = urlService.buildRecipeUrl;
     vm.buildPathToImg = imgService.buildPathToImg;
 }
 

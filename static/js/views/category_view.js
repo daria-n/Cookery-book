@@ -3,10 +3,10 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("categoryController", ['$location', '$filter', 'getRecipesService', 'urlService', 'imgService', categoryCtrlFcn]);
+    app.controller("categoryController", ['$location', '$filter', 'getRecipesService', 'imgService', categoryCtrlFcn]);
 });
 
-function categoryCtrlFcn($location, $filter, getRecipesService, urlService, imgService) {
+function categoryCtrlFcn($location, $filter, getRecipesService, imgService) {
     var vm = this;
 
     var category = $location.path().split('/')[1];
@@ -15,6 +15,5 @@ function categoryCtrlFcn($location, $filter, getRecipesService, urlService, imgS
         vm.posts = $filter('filter')(data.data, {"category": category});
     });
 
-    vm.buildRecipeUrl = urlService.buildRecipeUrl;
     vm.buildPathToImg = imgService.buildPathToImg;
 }

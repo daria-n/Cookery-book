@@ -3,10 +3,10 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("recipeDetailController", ['$location', 'getRecipesService', 'urlService', 'imgService', recipeDetailCtrlFcn]);
+    app.controller("recipeDetailController", ['$location', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
 });
 
-function recipeDetailCtrlFcn($location, getRecipesService, urlService, imgService) {
+function recipeDetailCtrlFcn($location, getRecipesService, imgService) {
     var vm = this;
 
     vm.recipeUrl = $location.path().split('/')[2];
@@ -23,6 +23,5 @@ function recipeDetailCtrlFcn($location, getRecipesService, urlService, imgServic
         vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
     });
 
-    vm.buildRecipeUrl = urlService.buildRecipeUrl;
     vm.buildPathToImg = imgService.buildPathToImg;
 }

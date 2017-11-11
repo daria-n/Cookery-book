@@ -3,12 +3,12 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("navController", ['getRecipesService', 'urlService', navCtrlFcn])
-        .controller("searchBoxController", ['getRecipesService', 'urlService', searchBoxCtrlFcn])
+    app.controller("navController", ['getRecipesService', navCtrlFcn])
+        .controller("searchBoxController", ['getRecipesService', searchBoxCtrlFcn])
         .filter('searchByName', searchByNameFilterFcn);
 });
 
-function navCtrlFcn(getRecipesService, urlService) {
+function navCtrlFcn(getRecipesService) {
     var vm = this;
 
     getRecipesService.then(function (data) {
@@ -21,11 +21,9 @@ function navCtrlFcn(getRecipesService, urlService) {
             vm.recipesByCategory[post.category].push(post);
         }
     });
-
-    vm.buildRecipeUrl = urlService.buildRecipeUrl;
 }
 
-function searchBoxCtrlFcn(getRecipesService, urlService) {
+function searchBoxCtrlFcn(getRecipesService) {
     var vm = this;
 
     vm.clearInput = function () {
@@ -39,8 +37,6 @@ function searchBoxCtrlFcn(getRecipesService, urlService) {
     vm.buildPathToImg = function (UrlName) {
         return "../img/" + UrlName + ".jpg";
     };
-
-    vm.buildRecipeUrl = urlService.buildRecipeUrl;
 }
 
 function searchByNameFilterFcn() {
