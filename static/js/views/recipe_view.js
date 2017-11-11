@@ -3,13 +3,11 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("recipeDetailController", ['$stateParams', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
+    app.controller("recipeDetailController", ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
 });
 
-function recipeDetailCtrlFcn($stateParams, getRecipesService, imgService) {
+function recipeDetailCtrlFcn($stateParams, $state, getRecipesService, imgService) {
     var vm = this;
-
-    vm.recipeUrl = $stateParams.name;
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;
@@ -20,7 +18,11 @@ function recipeDetailCtrlFcn($stateParams, getRecipesService, imgService) {
             });
         };
 
-        vm.currentRecipe = getCurrentRecipe(vm.recipeUrl)[0];
+        vm.currentRecipe = getCurrentRecipe($stateParams.name)[0];
+        if (!vm.currentRecipe) {
+            $state.go('404');
+            return;
+        }
     });
 
     vm.buildPathToImg = imgService.buildPathToImg;

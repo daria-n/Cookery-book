@@ -20,6 +20,10 @@ function routing($stateProvider, $urlRouterProvider) {
             controller: 'mainController',
             controllerAs: 'main'
         })
+        .state('404', {
+            url: '/404',
+            templateUrl: 'views/_404.ejs'
+        })
         .state('category', {
             url: '/:category',
             templateUrl: 'views/_main.ejs',
