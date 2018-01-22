@@ -17,6 +17,6 @@ require.config({
     }
 });
 
-require(['app', 'navigation/header', 'navigation/routing', 'views/main_view', 'views/category_view', 'views/recipe_view'], function (app) {
+require(['app', 'navigation/header', 'navigation/routing', 'navigation/search-box/search-box.directive', 'views/main_view', 'views/category_view', 'views/recipe_view'], function (app) {
     app.init();
 });
