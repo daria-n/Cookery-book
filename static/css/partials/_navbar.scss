@@ -14,11 +14,13 @@ nav {
   background-color: $navbar-background-color;
 
   > ul {
-    > li {
-      margin-right: 4px;
-      display: inline-block;
-      &.active > a, &:hover > a {
-        background-color: $navbar-hover-color;
+    > navigation-bar {
+      > li {
+        margin-right: 4px;
+        display: inline-block;
+        &.active > a, &:hover > a {
+          background-color: $navbar-hover-color;
+        }
       }
     }
   }

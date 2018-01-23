@@ -1,0 +1,8 @@
+<li class="active"><a href="#"><span>Strona główna</span></a></li
+><li class="dropdown" ng-repeat="(key, value) in navi.recipesByCategory"><a ui-sref="category({category: key})"><span>{{ key }}</span></a>
+    <ul>
+        <li ng-repeat="recipe in value">
+            <a ui-sref="recipe({category: recipe.category, name: recipe.UrlName})"><span>{{ recipe.name }}</span></a>
+        </li>
+    </ul>
+</li>
