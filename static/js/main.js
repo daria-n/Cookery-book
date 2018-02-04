@@ -17,6 +17,15 @@ require.config({
     }
 });
 
-require(['app', 'navigation/header', 'navigation/routing', 'navigation/navigation-bar/navigation-bar.directive', 'navigation/search-box/search-box.directive', 'views/main_view', 'views/category_view', 'views/recipe_view'], function (app) {
+require([
+    'app',
+    'navigation/header',
+    'navigation/routing',
+    'navigation/navigation-bar/navigation-bar.directive',
+    'navigation/search-box/search-box.directive',
+    'views/main_view',
+    'views/recipe-box/recipe-box.directive',
+    'views/category_view',
+    'views/recipe_view'], function (app) {
     app.init();
 });

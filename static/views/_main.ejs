@@ -1,12 +1,7 @@
 <div>
     <div class="wrapper">
         <div ng-repeat="post in main.posts" class="post-info">
-            <img ng-src="{{ main.buildPathToImg(post.UrlName) }}" alt="" width="200" height="150">
-            <div>
-                <h4><a ui-sref="recipe({category: post.category, name: post.UrlName})"><span>{{ post.name }}</span></a></h4>
-                <a ui-sref="category({category: post.category})"><span class="post-category">{{ post.category }}</span></a>
-                <p>{{ post.description }}</p>
-            </div>
+            <recipe-box post="post"></recipe-box>
         </div>
     </div>
 </div>
