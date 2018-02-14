@@ -3,7 +3,7 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("recipeDetailController", ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
+    app.controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
 });
 
 function recipeDetailCtrlFcn($stateParams, $state, getRecipesService, imgService) {

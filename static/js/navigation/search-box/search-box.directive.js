@@ -12,5 +12,5 @@ function searchBox() {
         templateUrl: 'js/navigation/search-box/search-box.html',
         controller: 'searchBoxController',
         controllerAs: 'search'
-    }
+    };
 }

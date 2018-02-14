@@ -17,11 +17,11 @@ app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 
 app.get('/', function (req, res) {
-    res.render("index");
+    res.render('index');
 });
 
 app.get('/recipes', function (req, res) {
-    res.json(require("./recipes_data.json"));
+    res.json(require('./recipes_data.json'));
 });
 
 app.listen(app.get('port'), function () {

@@ -12,5 +12,5 @@ function navigationBar() {
         templateUrl: 'js/navigation/navigation-bar/navigation-bar.html',
         controller: 'navController',
         controllerAs: 'navi'
-    }
+    };
 }

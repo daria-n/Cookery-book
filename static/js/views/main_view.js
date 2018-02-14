@@ -3,8 +3,8 @@
  */
 
 define(['../app'], function (app) {
-    app.controller("mainController", ['getRecipesService', 'imgService', mainCtrlFcn])
-        .service("imgService", imgServiceFcn);
+    app.controller('mainController', ['getRecipesService', 'imgService', mainCtrlFcn])
+        .service('imgService', imgServiceFcn);
 });
 
 function mainCtrlFcn(getRecipesService, imgService) {
@@ -19,6 +19,6 @@ function mainCtrlFcn(getRecipesService, imgService) {
 
 function imgServiceFcn() {
     this.buildPathToImg = function (UrlName) {
-        return "../img/" + UrlName + ".jpg";
+        return '../img/' + UrlName + '.jpg';
     };
 }

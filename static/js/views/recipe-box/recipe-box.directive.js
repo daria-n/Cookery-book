@@ -16,7 +16,7 @@ function recipeBox() {
         controller: function ($scope, imgService) {
             $scope.buildPathToImg = function (url) {
                 return imgService.buildPathToImg(url);
-            }
+            };
         }
-    }
+    };
 }
