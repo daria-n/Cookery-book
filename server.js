@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var path = require('path');
+var open = require('open');
 
 var app = express();
 
@@ -25,5 +26,6 @@ app.get('/recipes', function (req, res) {
 });
 
 app.listen(app.get('port'), function () {
-    console.log('App started on port 3000.');
+    console.log('App started on port ' + app.get('port') + '.');
+    open('http://127.0.0.1:' + app.get('port'));
 });
