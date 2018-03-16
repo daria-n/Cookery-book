@@ -4,4 +4,4 @@
 
 ## Execution
 
-`npm start`
+`grunt serve`
