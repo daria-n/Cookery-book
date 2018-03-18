@@ -2,7 +2,7 @@
  * Created by Daria on 22.01.2018.
  */
 
-define(['../../app'], function (app) {
+define(['../../app-compiled'], function (app) {
     app.directive('searchBox', searchBox);
 });
 

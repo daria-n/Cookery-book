@@ -18,14 +18,14 @@ require.config({
 });
 
 require([
-    'app',
-    'navigation/header',
-    'navigation/routing',
-    'navigation/navigation-bar/navigation-bar.directive',
-    'navigation/search-box/search-box.directive',
-    'views/main_view',
-    'views/recipe-box/recipe-box.directive',
-    'views/category_view',
-    'views/recipe_view'], function (app) {
+    'app-compiled',
+    'navigation/header-compiled',
+    'navigation/routing-compiled',
+    'navigation/navigation-bar/navigation-bar.directive-compiled',
+    'navigation/search-box/search-box.directive-compiled',
+    'views/main_view-compiled',
+    'views/recipe-box/recipe-box.directive-compiled',
+    'views/category_view-compiled',
+    'views/recipe_view-compiled'], function (app) {
     app.init();
 });

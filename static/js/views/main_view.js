@@ -2,7 +2,7 @@
  * Created by Daria on 09.11.2017.
  */
 
-define(['../app'], function (app) {
+define(['../app-compiled'], function (app) {
     app.controller('mainController', ['getRecipesService', 'imgService', mainCtrlFcn])
         .service('imgService', imgServiceFcn);
 });

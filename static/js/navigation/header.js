@@ -2,7 +2,7 @@
  * Created by Daria on 08.11.2017.
  */
 
-define(['../app'], function (app) {
+define(['../app-compiled'], function (app) {
     app.controller('navController', ['getRecipesService', navCtrlFcn])
         .controller('searchBoxController', ['getRecipesService', searchBoxCtrlFcn])
         .filter('searchByName', searchByNameFilterFcn);

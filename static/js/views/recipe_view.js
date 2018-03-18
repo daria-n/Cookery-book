@@ -2,7 +2,7 @@
  * Created by Daria on 09.10.2017.
  */
 
-define(['../app'], function (app) {
+define(['../app-compiled'], function (app) {
     app.controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
 });
 

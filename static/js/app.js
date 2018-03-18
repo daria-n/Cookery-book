@@ -4,9 +4,8 @@
 
 define(['angular', 'uiRouter'], function (angular) {
     var app = angular.module('cookeryBookApp', ['ui.router'])
-        .service('getRecipesService', ['$http', function ($http) {
-            return $http.get('/recipes');
-        }]);
+    .service('getRecipesService', ['$http', $http => $http.get('/recipes')
+    ]);
 
     app.init = function () {
         angular.bootstrap(document, ['cookeryBookApp']);

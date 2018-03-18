@@ -2,7 +2,7 @@
  * Created by Daria on 23.01.2018.
  */
 
-define(['../../app'], function (app) {
+define(['../../app-compiled'], function (app) {
     app.directive('navigationBar', navigationBar);
 });
 

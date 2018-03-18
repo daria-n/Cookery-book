@@ -9,6 +9,21 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        clean: ['**/*-compiled*'],
+        babel: {
+            options: {
+                sourceMap: false,
+                presets: ['es2015']
+            },
+            files: {
+                expand: true,
+                cwd: 'static/js/',
+                src: ['**/*.js'],
+                ext: '-compiled.js',
+                extDot: 'last',
+                dest: 'static/js/'
+            }
+        },
         open: {
             dev: {
                 path: 'http://127.0.0.1:3000',
@@ -29,5 +44,6 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerTask('serve', ['server', 'open:dev', 'watch']);
+    grunt.registerTask('compile', ['clean', 'babel']);
+    grunt.registerTask('serve', ['compile', 'server', 'open:dev', 'watch']);
 };
