@@ -8,7 +8,7 @@ define(['../app-compiled'], function (app) {
 });
 
 function mainCtrlFcn(getRecipesService, imgService) {
-    var vm = this;
+    const vm = this;
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;

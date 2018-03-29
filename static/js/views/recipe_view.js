@@ -7,12 +7,12 @@ define(['../app-compiled'], function (app) {
 });
 
 function recipeDetailCtrlFcn($stateParams, $state, getRecipesService, imgService) {
-    var vm = this;
+    const vm = this;
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;
 
-        var getCurrentRecipe = function (UrlName) {
+        const getCurrentRecipe = function (UrlName) {
             return vm.posts.filter(function (obj) {
                 return obj.UrlName === UrlName;
             });

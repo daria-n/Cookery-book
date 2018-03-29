@@ -7,7 +7,7 @@ define(['../app-compiled'], function (app) {
 });
 
 function categoryCtrlFcn($filter, $stateParams, $state, getRecipesService, imgService) {
-    var vm = this;
+    const vm = this;
 
     getRecipesService.then(function (data) {
         vm.posts = $filter('filter')(data.data, {'category': $stateParams.category});

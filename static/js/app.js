@@ -3,7 +3,7 @@
  */
 
 define(['angular', 'uiRouter'], function (angular) {
-    var app = angular.module('cookeryBookApp', ['ui.router'])
+    let app = angular.module('cookeryBookApp', ['ui.router'])
     .service('getRecipesService', ['$http', $http => $http.get('/recipes')
     ]);
 

@@ -9,13 +9,13 @@ define(['../app-compiled'], function (app) {
 });
 
 function navCtrlFcn(getRecipesService) {
-    var vm = this;
+    const vm = this;
 
     getRecipesService.then(function (data) {
         vm.posts = data.data;
         vm.recipesByCategory = {};
-        for (var i = 0; i < vm.posts.length; i++) {
-            var post = vm.posts[i];
+        for (let i = 0; i < vm.posts.length; i++) {
+            const post = vm.posts[i];
             if (!vm.recipesByCategory[post.category])
                 vm.recipesByCategory[post.category] = [];
             vm.recipesByCategory[post.category].push(post);
@@ -24,7 +24,7 @@ function navCtrlFcn(getRecipesService) {
 }
 
 function searchBoxCtrlFcn(getRecipesService) {
-    var vm = this;
+    const vm = this;
 
     vm.clearInput = function () {
         vm.searchString = '';
@@ -41,7 +41,7 @@ function searchBoxCtrlFcn(getRecipesService) {
 
 function searchByNameFilterFcn() {
     return function (arr, searchString) {
-        var result = [];
+        let result = [];
         if (searchString) {
             angular.forEach(arr, function (item) {
                 if (item.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
