@@ -2,21 +2,17 @@
  * Created by Daria on 09.10.2017.
  */
 
-define(['../app-compiled'], function (app) {
-    app.controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrlFcn]);
-});
+define(['../app-compiled'], app =>
+    app.controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrlFcn])
+);
 
 function recipeDetailCtrlFcn($stateParams, $state, getRecipesService, imgService) {
     const vm = this;
 
-    getRecipesService.then(function (data) {
+    getRecipesService.then(data => {
         vm.posts = data.data;
 
-        const getCurrentRecipe = function (UrlName) {
-            return vm.posts.filter(function (obj) {
-                return obj.UrlName === UrlName;
-            });
-        };
+        const getCurrentRecipe = urlName => vm.posts.filter(obj => obj.UrlName === urlName);
 
         vm.currentRecipe = getCurrentRecipe($stateParams.name)[0];
         if (!vm.currentRecipe) {

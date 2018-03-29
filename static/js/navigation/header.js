@@ -2,16 +2,16 @@
  * Created by Daria on 08.11.2017.
  */
 
-define(['../app-compiled'], function (app) {
+define(['../app-compiled'], app =>
     app.controller('navController', ['getRecipesService', navCtrlFcn])
         .controller('searchBoxController', ['getRecipesService', searchBoxCtrlFcn])
-        .filter('searchByName', searchByNameFilterFcn);
-});
+        .filter('searchByName', searchByNameFilterFcn)
+);
 
 function navCtrlFcn(getRecipesService) {
     const vm = this;
 
-    getRecipesService.then(function (data) {
+    getRecipesService.then(data => {
         vm.posts = data.data;
         vm.recipesByCategory = {};
         for (let i = 0; i < vm.posts.length; i++) {
@@ -26,24 +26,18 @@ function navCtrlFcn(getRecipesService) {
 function searchBoxCtrlFcn(getRecipesService) {
     const vm = this;
 
-    vm.clearInput = function () {
-        vm.searchString = '';
-    };
+    vm.clearInput = () => vm.searchString = '';
 
-    getRecipesService.then(function (data) {
-        vm.posts = data.data;
-    });
+    getRecipesService.then(data => vm.posts = data.data);
 
-    vm.buildPathToImg = function (UrlName) {
-        return '../img/' + UrlName + '.jpg';
-    };
+    vm.buildPathToImg = urlName => '../img/' + urlName + '.jpg';
 }
 
 function searchByNameFilterFcn() {
-    return function (arr, searchString) {
+    return (arr, searchString) => {
         let result = [];
         if (searchString) {
-            angular.forEach(arr, function (item) {
+            angular.forEach(arr, item => {
                 if (item.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
                     result.push(item);
             });

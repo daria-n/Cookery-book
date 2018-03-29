@@ -2,9 +2,9 @@
  * Created by Daria on 08.11.2017.
  */
 
-define(['../app-compiled'], function (app) {
-    app.config(routing);
-});
+define(['../app-compiled'], app =>
+    app.config(routing)
+);
 
 routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 

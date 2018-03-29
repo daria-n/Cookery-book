@@ -26,6 +26,6 @@ require([
     'views/main_view-compiled',
     'views/recipe-box/recipe-box.directive-compiled',
     'views/category_view-compiled',
-    'views/recipe_view-compiled'], function (app) {
-    app.init();
-});
+    'views/recipe_view-compiled'],
+        app => app.init()
+);
