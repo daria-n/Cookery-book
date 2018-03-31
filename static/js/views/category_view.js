@@ -3,14 +3,14 @@
  */
 
 define(['../app-compiled'], app =>
-    app.controller('categoryController', ['$filter', '$stateParams', '$state', 'getRecipesService', 'imgService', categoryCtrlFcn])
+    app.controller('categoryController', ['$stateParams', '$state', 'getRecipesService', 'imgService', categoryCtrlFcn])
 );
 
-function categoryCtrlFcn($filter, $stateParams, $state, getRecipesService, imgService) {
+function categoryCtrlFcn($stateParams, $state, getRecipesService, imgService) {
     const vm = this;
 
-    getRecipesService.getAllRecipes().then(data => {
-        vm.posts = $filter('filter')(data.data, {'category': $stateParams.category});
+    getRecipesService.getRecipesByCategory($stateParams.category).then(data => {
+        vm.posts = data;
         if (vm.posts.length === 0) {
             $state.go('404');
             return;

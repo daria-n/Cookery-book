@@ -11,15 +11,14 @@ define(['../app-compiled'], app =>
 function navCtrlFcn(getRecipesService) {
     const vm = this;
 
-    getRecipesService.getAllRecipes().then(data => {
-        vm.posts = data.data;
-        vm.recipesByCategory = {};
-        for (let i = 0; i < vm.posts.length; i++) {
-            const post = vm.posts[i];
-            if (!vm.recipesByCategory[post.category])
-                vm.recipesByCategory[post.category] = [];
-            vm.recipesByCategory[post.category].push(post);
-        }
+    vm.recipesByCategory = {};
+
+    getRecipesService.getAllCategories().then(categories => {
+        categories.forEach(category => {
+            getRecipesService.getRecipesByCategory(category).then(recipes =>
+                vm.recipesByCategory[category] = recipes
+            );
+        });
     });
 }
 

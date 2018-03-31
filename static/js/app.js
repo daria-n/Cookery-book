@@ -4,7 +4,7 @@
 
 define(['angular', 'uiRouter'], angular => {
     let app = angular.module('cookeryBookApp', ['ui.router'])
-    .service('getRecipesService', ['$http', getRecipesService]);
+    .service('getRecipesService', ['$http', '$filter', getRecipesService]);
 
     app.init = () => angular.bootstrap(document, ['cookeryBookApp']);
 
@@ -12,11 +12,29 @@ define(['angular', 'uiRouter'], angular => {
 });
 
 class getRecipesService {
-    constructor ($http) {
+    constructor ($http, $filter) {
         this.$http = $http;
+        this.$filter = $filter;
     }
 
     getAllRecipes() {
         return this.$http.get('/recipes');
+    }
+
+    getRecipesByCategory(category) {
+        return this.getAllRecipes().then(data =>
+            this.$filter('filter')(data.data, {'category': category}));
+    }
+
+    getAllCategories() {
+        let categories = [];
+        return this.getAllRecipes().then(data => {
+                data.data.forEach(elem => {
+                    if (!categories.includes(elem.category))
+                        categories.push(elem.category);
+                });
+                return categories;
+            }
+        );
     }
 }

@@ -10,9 +10,7 @@ function recipeDetailCtrlFcn($stateParams, $state, getRecipesService, imgService
     const vm = this;
 
     getRecipesService.getAllRecipes().then(data => {
-        vm.posts = data.data;
-
-        const getCurrentRecipe = urlName => vm.posts.filter(obj => obj.UrlName === urlName);
+        const getCurrentRecipe = urlName => data.data.filter(obj => obj.UrlName === urlName);
 
         vm.currentRecipe = getCurrentRecipe($stateParams.name)[0];
         if (!vm.currentRecipe) {
