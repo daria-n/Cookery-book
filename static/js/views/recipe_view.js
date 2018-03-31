@@ -9,7 +9,7 @@ define(['../app-compiled'], app =>
 function recipeDetailCtrlFcn($stateParams, $state, getRecipesService, imgService) {
     const vm = this;
 
-    getRecipesService.then(data => {
+    getRecipesService.getAllRecipes().then(data => {
         vm.posts = data.data;
 
         const getCurrentRecipe = urlName => vm.posts.filter(obj => obj.UrlName === urlName);

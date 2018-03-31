@@ -4,17 +4,21 @@
 
 define(['../app-compiled'], app =>
     app.controller('mainController', ['getRecipesService', 'imgService', mainCtrlFcn])
-        .service('imgService', imgServiceFcn)
+        .service('imgService', imgService)
 );
 
 function mainCtrlFcn(getRecipesService, imgService) {
     const vm = this;
 
-    getRecipesService.then(data => vm.posts = data.data);
+    getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
 
     vm.buildPathToImg = imgService.buildPathToImg;
 }
 
-function imgServiceFcn() {
-    this.buildPathToImg = urlName => '../img/' + urlName + '.jpg';
+class imgService {
+    constructor() {}
+
+    buildPathToImg(urlName) {
+        return '../img/' + urlName + '.jpg';
+    }
 }

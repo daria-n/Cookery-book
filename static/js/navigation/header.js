@@ -11,7 +11,7 @@ define(['../app-compiled'], app =>
 function navCtrlFcn(getRecipesService) {
     const vm = this;
 
-    getRecipesService.then(data => {
+    getRecipesService.getAllRecipes().then(data => {
         vm.posts = data.data;
         vm.recipesByCategory = {};
         for (let i = 0; i < vm.posts.length; i++) {
@@ -28,7 +28,7 @@ function searchBoxCtrlFcn(getRecipesService) {
 
     vm.clearInput = () => vm.searchString = '';
 
-    getRecipesService.then(data => vm.posts = data.data);
+    getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
 
     vm.buildPathToImg = urlName => '../img/' + urlName + '.jpg';
 }

@@ -9,7 +9,7 @@ define(['../app-compiled'], app =>
 function categoryCtrlFcn($filter, $stateParams, $state, getRecipesService, imgService) {
     const vm = this;
 
-    getRecipesService.then(data => {
+    getRecipesService.getAllRecipes().then(data => {
         vm.posts = $filter('filter')(data.data, {'category': $stateParams.category});
         if (vm.posts.length === 0) {
             $state.go('404');
