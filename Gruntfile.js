@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 cwd: 'static/js/',
-                src: ['**/*.js'],
+                src: ['**/*.js', '!**/*-compiled.js'],
                 ext: '-compiled.js',
                 extDot: 'last',
                 dest: 'static/js/'
@@ -31,7 +31,10 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: 'static/**/*.js'
+            js: {
+                files: 'static/**/*.js',
+                tasks: 'newer:babel'
+            }
         }
     });
 
