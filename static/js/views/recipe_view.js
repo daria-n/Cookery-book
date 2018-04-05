@@ -3,21 +3,33 @@
  */
 
 define(['../app-compiled'], app =>
-    app.controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrlFcn])
+    app.controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrl])
 );
 
-function recipeDetailCtrlFcn($stateParams, $state, getRecipesService, imgService) {
-    const vm = this;
+class recipeDetailCtrl {
+    constructor($stateParams, $state, getRecipesService, imgService) {
+        this.$stateParams = $stateParams;
+        this.$state = $state;
+        this.getRecipesService = getRecipesService;
+        this.imgService = imgService;
 
-    getRecipesService.getAllRecipes().then(data => {
-        const getCurrentRecipe = urlName => data.data.filter(obj => obj.UrlName === urlName);
+        this.init();
+    }
 
-        vm.currentRecipe = getCurrentRecipe($stateParams.name)[0];
-        if (!vm.currentRecipe) {
-            $state.go('404');
-            return;
-        }
-    });
+    init() {
+        const vm = this;
 
-    vm.buildPathToImg = imgService.buildPathToImg;
+        this.getRecipesService.getAllRecipes().then(data => {
+            const ERROR_PAGE = '404';
+            const getCurrentRecipe = urlName => data.data.filter(obj => obj.UrlName === urlName);
+
+            vm.currentRecipe = getCurrentRecipe(this.$stateParams.name)[0];
+            if (!vm.currentRecipe) {
+                this.$state.go(ERROR_PAGE);
+                return;
+            }
+        });
+
+        vm.buildPathToImg = this.imgService.buildPathToImg;
+    }
 }

@@ -3,34 +3,51 @@
  */
 
 define(['../app-compiled'], app =>
-    app.controller('navController', ['getRecipesService', navCtrlFcn])
-        .controller('searchBoxController', ['getRecipesService', searchBoxCtrlFcn])
+    app.controller('navController', ['getRecipesService', navCtrl])
+        .controller('searchBoxController', ['getRecipesService', searchBoxCtrl])
         .filter('searchByName', searchByNameFilterFcn)
 );
 
-function navCtrlFcn(getRecipesService) {
-    const vm = this;
+class navCtrl {
+    constructor(getRecipesService) {
+        this.getRecipesService = getRecipesService;
 
-    vm.recipesByCategory = {};
+        this.init();
+    }
 
-    getRecipesService.getAllCategories().then(categories => {
-        categories.forEach(category => {
-            getRecipesService.getRecipesByCategory(category).then(recipes =>
-                vm.recipesByCategory[category] = recipes
-            );
+    init() {
+        const vm = this;
+
+        vm.recipesByCategory = {};
+
+        this.getRecipesService.getAllCategories().then(categories => {
+            categories.forEach(category => {
+                this.getRecipesService.getRecipesByCategory(category).then(recipes =>
+                    vm.recipesByCategory[category] = recipes
+                );
+            });
         });
-    });
+    }
 }
 
-function searchBoxCtrlFcn(getRecipesService) {
-    const vm = this;
+class searchBoxCtrl {
+    constructor(getRecipesService) {
+        this.getRecipesService = getRecipesService;
 
-    vm.clearInput = () => vm.searchString = '';
+        this.init();
+    }
 
-    getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
+    init() {
+        const vm = this;
 
-    vm.buildPathToImg = urlName => '../img/' + urlName + '.jpg';
+        this.getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
+
+        vm.clearInput = () => vm.searchString = '';
+
+        vm.buildPathToImg = urlName => '../img/' + urlName + '.jpg';
+    }
 }
+
 
 function searchByNameFilterFcn() {
     return (arr, searchString) => {

@@ -3,19 +3,30 @@
  */
 
 define(['../app-compiled'], app =>
-    app.controller('categoryController', ['$stateParams', '$state', 'getRecipesService', 'imgService', categoryCtrlFcn])
+    app.controller('categoryController', ['$stateParams', '$state', 'getRecipesService', 'imgService', categoryCtrl])
 );
 
-function categoryCtrlFcn($stateParams, $state, getRecipesService, imgService) {
-    const vm = this;
+class categoryCtrl {
+    constructor($stateParams, $state, getRecipesService, imgService) {
+        this.$stateParams = $stateParams;
+        this.$state = $state;
+        this.getRecipesService = getRecipesService;
+        this.imgService = imgService;
 
-    getRecipesService.getRecipesByCategory($stateParams.category).then(data => {
-        vm.posts = data;
-        if (vm.posts.length === 0) {
-            $state.go('404');
-            return;
-        }
-    });
+        this.init();
+    }
 
-    vm.buildPathToImg = imgService.buildPathToImg;
+    init() {
+        const vm = this;
+
+        this.getRecipesService.getRecipesByCategory(this.$stateParams.category).then(data => {
+            vm.posts = data;
+            if (vm.posts.length === 0) {
+                this.$state.go('404');
+                return;
+            }
+        });
+
+        vm.buildPathToImg = this.imgService.buildPathToImg;
+    }
 }

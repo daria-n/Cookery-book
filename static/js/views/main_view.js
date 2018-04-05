@@ -3,17 +3,28 @@
  */
 
 define(['../app-compiled'], app =>
-    app.controller('mainController', ['getRecipesService', 'imgService', mainCtrlFcn])
+    app.controller('mainController', ['getRecipesService', 'imgService', mainCtrl])
         .service('imgService', imgService)
 );
 
-function mainCtrlFcn(getRecipesService, imgService) {
-    const vm = this;
 
-    getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
+class mainCtrl {
+    constructor(getRecipesService, imgService) {
+        this.getRecipesService = getRecipesService;
+        this.imgService = imgService;
 
-    vm.buildPathToImg = imgService.buildPathToImg;
+        this.init();
+    }
+
+    init() {
+        const vm = this;
+
+        this.getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
+
+        vm.buildPathToImg = this.imgService.buildPathToImg;
+    }
 }
+
 
 class imgService {
     constructor() {}
