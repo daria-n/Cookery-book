@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: ['**/*-compiled*'],
+        clean: ['**/*-compiled*', '**/*.css'],
         babel: {
             options: {
                 sourceMap: false,
@@ -22,6 +22,17 @@ module.exports = function(grunt) {
                 ext: '-compiled.js',
                 extDot: 'last',
                 dest: 'static/js/'
+            }
+        },
+        sass: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'static/css',
+                    src: ['**/*.scss'],
+                    dest: 'static/css',
+                    ext: '.css'
+                }]
             }
         },
         open: {
@@ -47,6 +58,6 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerTask('compile', ['clean', 'babel']);
+    grunt.registerTask('compile', ['clean', 'babel', 'sass']);
     grunt.registerTask('serve', ['compile', 'server', 'open:dev', 'watch']);
 };
