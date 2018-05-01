@@ -3,31 +3,9 @@
  */
 
 define(['../app-compiled'], app =>
-    app.controller('navController', ['getRecipesService', navCtrl])
-        .filter('searchByName', searchByNameFilterFcn)
+    app.filter('searchByName', searchByNameFilterFcn)
 );
 
-class navCtrl {
-    constructor(getRecipesService) {
-        this.getRecipesService = getRecipesService;
-
-        this.init();
-    }
-
-    init() {
-        const vm = this;
-
-        vm.recipesByCategory = {};
-
-        this.getRecipesService.getAllCategories().then(categories => {
-            categories.forEach(category => {
-                this.getRecipesService.getRecipesByCategory(category).then(recipes =>
-                    vm.recipesByCategory[category] = recipes
-                );
-            });
-        });
-    }
-}
 
 function searchByNameFilterFcn() {
     return (arr, searchString) => {

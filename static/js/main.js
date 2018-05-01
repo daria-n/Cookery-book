@@ -21,7 +21,7 @@ require([
     'app-compiled',
     'navigation/header-compiled',
     'navigation/routing-compiled',
-    'navigation/navigation-bar/navigation-bar.directive-compiled',
+    'navigation/navigation-bar/navigation-bar.component-compiled',
     'navigation/search-box/search-box.component-compiled',
     'views/main_view-compiled',
     'views/recipe-box/recipe-box.directive-compiled',
