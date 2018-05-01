@@ -19,7 +19,7 @@ require.config({
 
 require([
     'app-compiled',
-    'navigation/header-compiled',
+    'navigation/search-by-name.filter-compiled',
     'navigation/routing-compiled',
     'navigation/navigation-bar/navigation-bar.component-compiled',
     'navigation/search-box/search-box.component-compiled',
