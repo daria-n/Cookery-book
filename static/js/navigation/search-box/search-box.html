@@ -1,10 +1,10 @@
 <div class="searchBox dropdown">
-    <input type="text" ng-model="search.searchString" placeholder="Znajdź przepis"/>
+    <input type="text" ng-model="$ctrl.searchString" placeholder="Znajdź przepis"/>
     <ul>
-        <li ng-repeat="item in search.posts | searchByName:search.searchString">
+        <li ng-repeat="item in $ctrl.posts | searchByName:$ctrl.searchString">
             <div>
-                <a ui-sref="recipe({category: item.category, name: item.UrlName})" ng-click="search.clearInput()">
-                    <img ng-src="{{ search.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
+                <a ui-sref="recipe({category: item.category, name: item.UrlName})" ng-click="$ctrl.clearInput()">
+                    <img ng-src="{{ $ctrl.buildPathToImg(item.UrlName) }}" alt="" width="40" height="30">
                     <span>{{item.name}}</span>
                 </a>
             </div>

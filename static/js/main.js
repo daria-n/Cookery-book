@@ -22,7 +22,7 @@ require([
     'navigation/header-compiled',
     'navigation/routing-compiled',
     'navigation/navigation-bar/navigation-bar.directive-compiled',
-    'navigation/search-box/search-box.directive-compiled',
+    'navigation/search-box/search-box.component-compiled',
     'views/main_view-compiled',
     'views/recipe-box/recipe-box.directive-compiled',
     'views/category_view-compiled',

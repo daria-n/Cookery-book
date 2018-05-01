@@ -4,7 +4,6 @@
 
 define(['../app-compiled'], app =>
     app.controller('navController', ['getRecipesService', navCtrl])
-        .controller('searchBoxController', ['getRecipesService', searchBoxCtrl])
         .filter('searchByName', searchByNameFilterFcn)
 );
 
@@ -29,25 +28,6 @@ class navCtrl {
         });
     }
 }
-
-class searchBoxCtrl {
-    constructor(getRecipesService) {
-        this.getRecipesService = getRecipesService;
-
-        this.init();
-    }
-
-    init() {
-        const vm = this;
-
-        this.getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
-
-        vm.clearInput = () => vm.searchString = '';
-
-        vm.buildPathToImg = urlName => '../img/' + urlName + '.jpg';
-    }
-}
-
 
 function searchByNameFilterFcn() {
     return (arr, searchString) => {
