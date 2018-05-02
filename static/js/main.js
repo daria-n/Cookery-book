@@ -24,7 +24,7 @@ require([
     'navigation/navigation-bar/navigation-bar.component-compiled',
     'navigation/search-box/search-box.component-compiled',
     'views/main_view-compiled',
-    'views/recipe-box/recipe-box.directive-compiled',
+    'views/recipe-box/recipe-box.component-compiled',
     'views/category_view-compiled',
     'views/recipe_view-compiled'],
         app => app.init()

@@ -1,6 +1,6 @@
-<img ng-src="{{ buildPathToImg(post.UrlName) }}" alt="" width="200" height="150">
+<img ng-src="{{ $ctrl.buildPathToImg($ctrl.post.UrlName) }}" alt="" width="200" height="150">
 <div>
-    <h4><a ui-sref="recipe({category: post.category, name: post.UrlName})"><span>{{ post.name }}</span></a></h4>
-    <a ui-sref="category({category: post.category})"><span class="post-category">{{ post.category }}</span></a>
-    <p>{{ post.description }}</p>
+    <h4><a ui-sref="recipe({category: $ctrl.postCategory, name: $ctrl.post.UrlName})"><span>{{ $ctrl.post.name }}</span></a></h4>
+    <a ui-sref="category({category: $ctrl.postCategory})"><span class="post-category">{{ $ctrl.postCategory }}</span></a>
+    <p>{{ $ctrl.post.description }}</p>
 </div>
