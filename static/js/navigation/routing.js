@@ -2,13 +2,9 @@
  * Created by Daria on 08.11.2017.
  */
 
-define(['../app-compiled'], app =>
-    app.config(routing)
-);
-
 routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-function routing($stateProvider, $urlRouterProvider) {
+export default function routing($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('base', {
             url: '/',
@@ -38,4 +34,4 @@ function routing($stateProvider, $urlRouterProvider) {
         });
 
     $urlRouterProvider.otherwise('/main');
-}
+};

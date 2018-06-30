@@ -2,6 +2,8 @@
  * Created by Daria on 16.03.2018.
  */
 
+const webpackConfig = require('./webpack.config');
+
 module.exports = function(grunt) {
     'use strict';
 
@@ -9,20 +11,10 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: ['**/*-compiled*', '**/*.css'],
-        babel: {
-            options: {
-                sourceMap: false,
-                presets: ['es2015']
-            },
-            files: {
-                expand: true,
-                cwd: 'static/js/',
-                src: ['**/*.js', '!**/*-compiled.js'],
-                ext: '-compiled.js',
-                extDot: 'last',
-                dest: 'static/js/'
-            }
+        clean: ['**/*.css'],
+        // clean: ['static/dist/', '**/*.css'],
+        webpack: {
+            dev: Object.assign({ watch: true }, webpackConfig)
         },
         sass: {
             dist: {
@@ -58,6 +50,7 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerTask('compile', ['clean', 'babel', 'sass']);
+    grunt.registerTask('compile', ['clean', 'sass']);
+    // grunt.registerTask('compile', ['clean', 'webpack:dev', 'sass']);
     grunt.registerTask('serve', ['compile', 'server', 'open:dev', 'watch']);
 };

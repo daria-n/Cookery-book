@@ -2,11 +2,7 @@
  * Created by Daria on 09.10.2017.
  */
 
-define(['../app-compiled'], app =>
-    app.controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrl])
-);
-
-class recipeDetailCtrl {
+export default class recipeDetailCtrl {
     constructor($stateParams, $state, getRecipesService, imgService) {
         this.$stateParams = $stateParams;
         this.$state = $state;

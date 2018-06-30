@@ -2,12 +2,7 @@
  * Created by Daria on 08.11.2017.
  */
 
-define(['../app-compiled'], app =>
-    app.filter('searchByName', searchByNameFilterFcn)
-);
-
-
-function searchByNameFilterFcn() {
+export default function searchByNameFilterFcn() {
     return (arr, searchString) => {
         let result = [];
         if (searchString) {
@@ -18,4 +13,4 @@ function searchByNameFilterFcn() {
         }
         return result;
     };
-}
+};

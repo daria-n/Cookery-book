@@ -2,12 +2,6 @@
  * Created by Daria on 09.11.2017.
  */
 
-define(['../app-compiled'], app =>
-    app.controller('mainController', ['getRecipesService', 'imgService', mainCtrl])
-        .service('imgService', imgService)
-);
-
-
 class mainCtrl {
     constructor(getRecipesService, imgService) {
         this.getRecipesService = getRecipesService;
@@ -33,3 +27,5 @@ class imgService {
         return '../img/' + urlName + '.jpg';
     }
 }
+
+export {mainCtrl, imgService};

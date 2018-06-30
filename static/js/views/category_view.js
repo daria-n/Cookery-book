@@ -2,11 +2,7 @@
  * Created by Daria on 09.10.2017.
  */
 
-define(['../app-compiled'], app =>
-    app.controller('categoryController', ['$stateParams', '$state', 'getRecipesService', 'imgService', categoryCtrl])
-);
-
-class categoryCtrl {
+export default class categoryCtrl {
     constructor($stateParams, $state, getRecipesService, imgService) {
         this.$stateParams = $stateParams;
         this.$state = $state;
@@ -29,4 +25,4 @@ class categoryCtrl {
 
         vm.buildPathToImg = this.imgService.buildPathToImg;
     }
-}
+};
