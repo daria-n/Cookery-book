@@ -8,24 +8,20 @@ export default class recipeDetailCtrl {
         this.$state = $state;
         this.getRecipesService = getRecipesService;
         this.imgService = imgService;
-
-        this.init();
     }
 
-    init() {
-        const vm = this;
-
+    $onInit() {
         this.getRecipesService.getAllRecipes().then(data => {
             const ERROR_PAGE = '404';
             const getCurrentRecipe = urlName => data.data.filter(obj => obj.UrlName === urlName);
 
-            vm.currentRecipe = getCurrentRecipe(this.$stateParams.name)[0];
-            if (!vm.currentRecipe) {
+            this.currentRecipe = getCurrentRecipe(this.$stateParams.name)[0];
+            if (!this.currentRecipe) {
                 this.$state.go(ERROR_PAGE);
                 return;
             }
         });
 
-        vm.buildPathToImg = this.imgService.buildPathToImg;
+        this.buildPathToImg = this.imgService.buildPathToImg;
     }
 }

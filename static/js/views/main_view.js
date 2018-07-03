@@ -6,16 +6,12 @@ class mainCtrl {
     constructor(getRecipesService, imgService) {
         this.getRecipesService = getRecipesService;
         this.imgService = imgService;
-
-        this.init();
     }
 
-    init() {
-        const vm = this;
+    $onInit() {
+        this.getRecipesService.getAllRecipes().then(data => this.posts = data.data);
 
-        this.getRecipesService.getAllRecipes().then(data => vm.posts = data.data);
-
-        vm.buildPathToImg = this.imgService.buildPathToImg;
+        this.buildPathToImg = this.imgService.buildPathToImg;
     }
 }
 

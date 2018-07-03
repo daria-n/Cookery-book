@@ -8,21 +8,17 @@ export default class categoryCtrl {
         this.$state = $state;
         this.getRecipesService = getRecipesService;
         this.imgService = imgService;
-
-        this.init();
     }
 
-    init() {
-        const vm = this;
-
+    $onInit() {
         this.getRecipesService.getRecipesByCategory(this.$stateParams.category).then(data => {
-            vm.posts = data;
-            if (vm.posts.length === 0) {
+            this.posts = data;
+            if (this.posts.length === 0) {
                 this.$state.go('404');
                 return;
             }
         });
 
-        vm.buildPathToImg = this.imgService.buildPathToImg;
+        this.buildPathToImg = this.imgService.buildPathToImg;
     }
 };
