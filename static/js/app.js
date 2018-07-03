@@ -10,34 +10,8 @@ import recipeBoxComponent from './views/recipe-box/recipe-box.component';
 import categoryCtrl from './views/category_view';
 import {mainCtrl, imgService} from './views/main_view';
 import recipeDetailCtrl from './views/recipe_view';
+import getRecipesService from './recipe-services/get-recipes.service';
 
-class getRecipesService {
-    constructor ($http, $filter) {
-        this.$http = $http;
-        this.$filter = $filter;
-    }
-
-    getAllRecipes() {
-        return this.$http.get('/recipes');
-    }
-
-    getRecipesByCategory(category) {
-        return this.getAllRecipes().then(data =>
-            this.$filter('filter')(data.data, {'category': category}));
-    }
-
-    getAllCategories() {
-        let categories = [];
-        return this.getAllRecipes().then(data => {
-                data.data.forEach(elem => {
-                    if (!categories.includes(elem.category))
-                        categories.push(elem.category);
-                });
-                return categories;
-            }
-        );
-    }
-}
 
 let app = angular.module('cookeryBookApp', ['ui.router'])
     .config(routingFcn)
