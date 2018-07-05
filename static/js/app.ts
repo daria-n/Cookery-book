@@ -2,6 +2,8 @@
  * Created by Daria on 07.10.2017.
  */
 
+import * as angular from 'angular';
+
 import routingFcn from './navigation/routing';
 import navigationBarComponent from './navigation/navigation-bar/navigation-bar.component';
 import searchByNameFilterFcn from './navigation/search-by-name.filter';
@@ -13,7 +15,7 @@ import recipeDetailCtrl from './views/recipe_view';
 import getRecipesService from './recipe-services/get-recipes.service';
 
 
-let app = angular.module('cookeryBookApp', ['ui.router'])
+angular.module('cookeryBookApp', ['ui.router'])
     .config(routingFcn)
     .component('navigationBar', navigationBarComponent)
     .filter('searchByName', searchByNameFilterFcn)
@@ -25,5 +27,6 @@ let app = angular.module('cookeryBookApp', ['ui.router'])
     .controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrl])
     .service('getRecipesService', ['$http', '$filter', getRecipesService]);
 
-app.init = () => angular.bootstrap(document, ['cookeryBookApp']);
-app.init();
+angular.element(document).ready(() => {
+    angular.bootstrap(document, ['cookeryBookApp']);
+});

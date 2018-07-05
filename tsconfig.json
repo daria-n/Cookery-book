@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./static/dist/",
+    "noImplicitAny": true,
+    "allowJs": true,
+    "module": "es6",
+    "target": "es5",
+    "types": [
+      "angular"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  }
+//  "include": [
+//    "**/*.ts"
+//  ],
+//  "exclude": [
+//    "node_modules"
+//  ]
+}
