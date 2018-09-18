@@ -1,7 +1,3 @@
-/**
- * Created by Daria on 08.11.2017.
- */
-
 routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default function routing($stateProvider, $urlRouterProvider) {
@@ -12,9 +8,7 @@ export default function routing($stateProvider, $urlRouterProvider) {
         })
         .state('main', {
             url: '/main',
-            templateUrl: 'views/_main.ejs',
-            controller: 'mainController',
-            controllerAs: 'main'
+            component: 'mainViewComponent'
         })
         .state('404', {
             url: '/404',
@@ -22,9 +16,7 @@ export default function routing($stateProvider, $urlRouterProvider) {
         })
         .state('category', {
             url: '/:category',
-            templateUrl: 'views/_main.ejs',
-            controller: 'categoryController',
-            controllerAs: 'main'
+            component: 'categoryViewComponent'
         })
         .state('recipe', {
             url: '/:category/:name',

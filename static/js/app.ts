@@ -1,7 +1,3 @@
-/**
- * Created by Daria on 07.10.2017.
- */
-
 import * as angular from 'angular';
 
 import routingFcn from './navigation/routing';
@@ -9,8 +5,9 @@ import navigationBarComponent from './navigation/navigation-bar/navigation-bar.c
 import searchByNameFilterFcn from './navigation/search-by-name.filter';
 import searchBoxComponent from './navigation/search-box/search-box.component';
 import recipeBoxComponent from './views/recipe-box/recipe-box.component';
-import categoryCtrl from './views/category_view';
-import {mainCtrl, imgService} from './views/main_view';
+import categoryViewComponent from './views/category-view/category-view.component';
+import imagesService from './views/images.service';
+import mainViewComponent from './views/main-view/main-view.component';
 import recipeDetailCtrl from './views/recipe_view';
 import getRecipesService from './recipe-services/get-recipes.service';
 
@@ -21,9 +18,9 @@ angular.module('cookeryBookApp', ['ui.router'])
     .filter('searchByName', searchByNameFilterFcn)
     .component('searchBox', searchBoxComponent)
     .component('recipeBox', recipeBoxComponent)
-    .controller('categoryController', ['$stateParams', '$state', 'getRecipesService', 'imgService', categoryCtrl])
-    .service('imgService', imgService)
-    .controller('mainController', ['getRecipesService', 'imgService', mainCtrl])
+    .component('categoryViewComponent', categoryViewComponent)
+    .service('imgService', imagesService)
+    .component('mainViewComponent', mainViewComponent)
     .controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrl])
     .service('getRecipesService', ['$http', '$filter', getRecipesService]);
 

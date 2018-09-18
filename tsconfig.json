@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./static/dist/",
-    "noImplicitAny": true,
+//    "noImplicitAny": true,
     "allowJs": true,
     "module": "es6",
     "target": "es5",
