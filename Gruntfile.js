@@ -1,7 +1,3 @@
-/**
- * Created by Daria on 16.03.2018.
- */
-
 const webpackConfig = require('./webpack.config');
 
 module.exports = function(grunt) {
@@ -11,10 +7,9 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: ['**/*.css'],
-        // clean: ['static/dist/', '**/*.css'],
+        clean: ['static/dist/', '**/*.css'],
         webpack: {
-            dev: Object.assign({ watch: true }, webpackConfig)
+            dev: Object.assign({ watch: false }, webpackConfig)
         },
         sass: {
             dist: {
@@ -30,13 +25,16 @@ module.exports = function(grunt) {
         open: {
             dev: {
                 path: 'http://127.0.0.1:3000',
-                app: 'Firefox'
+                app: 'Chrome'
             }
         },
         watch: {
-            js: {
-                files: 'static/**/*.js',
-                tasks: 'newer:babel'
+            srcFiles: {
+                files: ['static/**'],
+                tasks: ['compile'],
+                options: {
+                    livereload: true
+                }
             }
         }
     });
@@ -50,7 +48,6 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerTask('compile', ['clean', 'sass']);
-    // grunt.registerTask('compile', ['clean', 'webpack:dev', 'sass']);
+    grunt.registerTask('compile', ['clean', 'webpack:dev', 'sass']);
     grunt.registerTask('serve', ['compile', 'server', 'open:dev', 'watch']);
 };
