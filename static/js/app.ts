@@ -8,7 +8,7 @@ import recipeBoxComponent from './views/recipe-box/recipe-box.component';
 import categoryViewComponent from './views/category-view/category-view.component';
 import imagesService from './views/images.service';
 import mainViewComponent from './views/main-view/main-view.component';
-import recipeDetailCtrl from './views/recipe_view';
+import recipeDetailsViewComponent from './views/recipe-details-view/recipe-details-view.component';
 import getRecipesService from './recipe-services/get-recipes.service';
 
 
@@ -21,7 +21,7 @@ angular.module('cookeryBookApp', ['ui.router'])
     .component('categoryViewComponent', categoryViewComponent)
     .service('imgService', imagesService)
     .component('mainViewComponent', mainViewComponent)
-    .controller('recipeDetailController', ['$stateParams', '$state', 'getRecipesService', 'imgService', recipeDetailCtrl])
+    .component('recipeDetailsViewComponent', recipeDetailsViewComponent)
     .service('getRecipesService', ['$http', '$filter', getRecipesService]);
 
 angular.element(document).ready(() => {

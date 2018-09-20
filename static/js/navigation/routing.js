@@ -20,9 +20,7 @@ export default function routing($stateProvider, $urlRouterProvider) {
         })
         .state('recipe', {
             url: '/:category/:name',
-            templateUrl: 'views/_recipe_detail.ejs',
-            controller: 'recipeDetailController',
-            controllerAs: 'detail'
+            component: 'recipeDetailsViewComponent'
         });
 
     $urlRouterProvider.otherwise('/main');
